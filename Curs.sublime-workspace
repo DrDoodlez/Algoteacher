@@ -1,0 +1,731 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"E",
+				"EmailsRepository"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"va",
+				"value"
+			],
+			[
+				"fo",
+				"font-size"
+			],
+			[
+				"trend__",
+				"trend__title"
+			],
+			[
+				"fon",
+				"fontSize"
+			],
+			[
+				"style",
+				"styles"
+			],
+			[
+				"title",
+				"titleHeight"
+			],
+			[
+				"titl",
+				"Title"
+			],
+			[
+				"c",
+				"curveName"
+			],
+			[
+				"re",
+				"return"
+			],
+			[
+				"ta",
+				"tagAdapter"
+			],
+			[
+				"visi",
+				"visible"
+			],
+			[
+				"vs",
+				"visibility"
+			],
+			[
+				"O",
+				"OPTIONAL_VALUE"
+			],
+			[
+				"op",
+				"OPTIONAL_VALUE"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"id",
+				"id_rsa"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "src/Public/js/apps/home/views/MainView.js",
+			"settings":
+			{
+				"buffer_size": 556,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Public/js/core/router.js",
+			"settings":
+			{
+				"buffer_size": 915,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Public/js/apps/inbox/views/subviews/InboxView.js",
+			"settings":
+			{
+				"buffer_size": 571,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "src/Views/Home/Index.cshtml",
+			"settings":
+			{
+				"buffer_size": 934,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 185.0,
+		"last_filter": "Package Control: in",
+		"selected_items":
+		[
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 571.0
+	},
+	"console":
+	{
+		"height": 445.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/D/CursProj/Algoteacher/src",
+		"/D/CursProj/Algoteacher/src/Api",
+		"/D/CursProj/Algoteacher/src/App_Start",
+		"/D/CursProj/Algoteacher/src/Public",
+		"/D/CursProj/Algoteacher/src/Public/js",
+		"/D/CursProj/Algoteacher/src/Public/js/apps",
+		"/D/CursProj/Algoteacher/src/Public/js/apps/inbox",
+		"/D/CursProj/Algoteacher/src/Public/js/apps/inbox/collections",
+		"/D/CursProj/Algoteacher/src/Public/js/apps/inbox/models",
+		"/D/CursProj/Algoteacher/src/Public/js/apps/inbox/subapps/compose",
+		"/D/CursProj/Algoteacher/src/Public/js/apps/inbox/subapps/compose/views",
+		"/D/CursProj/Algoteacher/src/Public/js/apps/inbox/subapps/compose/views/subviews",
+		"/D/CursProj/Algoteacher/src/Public/js/apps/inbox/views",
+		"/D/CursProj/Algoteacher/src/Public/js/apps/inbox/views/subviews",
+		"/D/CursProj/Algoteacher/src/Public/js/core",
+		"/D/CursProj/Algoteacher/src/Views",
+		"/D/CursProj/Algoteacher/src/Views/Home"
+	],
+	"file_history":
+	[
+		"/D/CursProj/Algoteacher/src/Api/ContactsController.cs",
+		"/D/CursProj/Algoteacher/src/Algoteacher.csproj",
+		"/D/CursProj/Algoteacher/src/Models/Repositories/TasksRepository.cs",
+		"/D/CursProj/Algoteacher/.vs/config/applicationhost.config",
+		"/D/CursProj/Algoteacher/src/Api/TasksController.cs",
+		"/D/CursProj/Algoteacher/Algoteacher.sln",
+		"/D/CursProj/Algoteacher/src/obj/Debug/Spa.csproj.FileListAbsolute.txt",
+		"/D/CursProj/Algoteacher/src/Api/InboxController.cs",
+		"/D/CursProj/Algoteacher/src/Public/js/apps/inbox/views/MainView.js",
+		"/C/Users/doodlez/Downloads/Single Page Application with Backbone.js and ASP.NET Web API/C#/SpaDemo/Controllers/Apis/TodosController.cs",
+		"/C/Users/doodlez/Downloads/Single Page Application with Backbone.js and ASP.NET Web API/C#/SpaDemo/Models/SpaDemoContext.cs",
+		"/C/Users/doodlez/Downloads/Single Page Application with Backbone.js and ASP.NET Web API/C#/SpaDemo/Scripts/todos.js",
+		"/C/Users/doodlez/Downloads/Single Page Application with Backbone.js and ASP.NET Web API/C#/SpaDemo/Models/Todo.cs",
+		"/C/Users/doodlez/Downloads/Single Page Application with Backbone.js and ASP.NET Web API/C#/SpaDemo/Controllers/TodoController.cs",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-components/trend/styles/trendXyPlotRenderer.scss",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-designer/app/webhmi/themes/dark-theme.json",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-designer/app/webhmi/themes/theme.styles.scss",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-demo-applications/__webhmi-themes/light-theme.json",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-components/trend/renderers/xyplot.js",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-designer/app/webhmi/themes/light-theme.json",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-demo-applications/__webhmi-themes/dark-theme.json",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-components/trend-legend/styles/trendLegendDefaultRenderer.scss",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-components/xy-plot/themes/theme.json",
+		"/D/Valmet/devenv/sources/webhmi/hmi-content-importer/.latest-application-payload.json",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-components/trend/styles/trendWithLegendRenderer.scss",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-components/trend/styles/trendDefaultRenderer.scss",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-components/xy-plot/styles/xyPlotDefaultRenderer.scss",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-components/xy-plot/renderers/default.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/libs/Plot2D/Plot2D.Renderers.Axis.js",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-demo-applications/testing/pages/tick-text-trend.json",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-components/trend-timewindow/renderers/default.js",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-components/trend-timewindow/styles/trendTimewindowDefaultRenderer.scss",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-demo-applications/regression-test-set/pages/trend-legend-full-screen.json",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-components/xy-plot/interface/xy-plot.json",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-designer/app/js/property-handlers/trend/trend__xyplot.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/libs/popover-helper.js",
+		"/C/Users/doodlez/Downloads/report.tex",
+		"/D/Учёба/По курсовику/Misha/main.tex",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-demo-applications/regression-test-set/pages/trend-legend-10-curves-medium-font.json",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-demo-applications/regression-test-set/pages/trend-legend-as-separate-component.json",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-demo-applications/regression-test-set/pages/trend-legend-10-curves-small-font.json",
+		"/D/Учёба/JS/html/js/script1.js",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-components/text/interface/text.json",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-demo-applications/testing/pages/two-trend-timewindow.json",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-demo-applications/hpp-demo/pages/trends.json",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-components/trend-curve/renderers/default.js",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-components/trend/interface/trend.json",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/libs/Plot2D/Plot2D.Renderers.sharedAxis.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/libs/Plot2D/Plot2D.Renderers.SharedAxisActual.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/libs/Plot2D/Plot2D.Renderers.yAxis.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/libs/Plot2D/Plot2D.Renderers.timeAxis.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/libs/Plot2D/Plot2D.Renderers.timeAxis.TickLabelsMixins.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/libs/Plot2D/Plot2D.Models.ZoomModel.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/libs/Plot2D/Plot2D.Behaviours.Minimap.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/libs/Plot2D/Plot2D.Helpers.RealtimePosition.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/libs/Plot2D/Plot2D.Renderers.Base.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/libs/Plot2D/Plot2D.Renderers.Axis.TickLabelsMixins.js",
+		"/C/Users/doodlez/Desktop/Заметки по работе.txt",
+		"/C/Users/doodlez/Desktop/набросок для курсовика.txt",
+		"/C/Users/doodlez/Desktop/Smart",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/models/component/base/draggable.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/models/component/base/definition.js",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-components/trend-legend/renderers/default.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/models/component/base/synchronizationMixin.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/models/component/base/Component.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/assets/plot2d/Plot2D.scss",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/libs/Plot2D/Plot2D.Renderers.xAxis.js",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-components/trend-curve/interface/trend-curve.json",
+		"/D/Valmet/devenv/sources/webhmi/dna-components/controller/functions/functions.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/models/Pipe.js",
+		"/C/Users/doodlez/Desktop/Пролемы прикладной математики.txt",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-components/trend-curve/presentations/default.json",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-demo-applications/regression-test-set/pages/trend-legend-3-curves-medium-font.json",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/models/component/base/inputsAndOutputs.js",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-demo-applications/regression-test-set/pages/trend-legend-metadata.json",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/libs/Plot2D/Plot2D.Axis.Base.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/libs/Plot2D/tests/axes/Plot2D.Renderers.Axis.test.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/models/component/base/bindings.js",
+		"/D/Valmet/devenv/sources/webhmi/dna-components/motor/functions/functions.js",
+		"/D/Valmet/devenv/sources/webhmi/dna-components/analog-measurement/functions/functions.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/libs/Plot2D/Plot2D.Primitives.Shape.js",
+		"/C/Users/doodlez/Desktop/NewBackUp/doc/набросок для курсовика.txt",
+		"/C/Users/doodlez/Desktop/NewBackUp/doc/набросок для курсовика — копия.txt",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/libs/Plot2D/Plot2D.Primitives.Hairline.js",
+		"/D/Valmet/devenv/sources/webhmi/webhmi-demo-applications/regression-test-set/pages/trend-legend-3-curves-large-font.json",
+		"/D/Valmet/devenv/sources/webhmi/webhmi/tasks/bower.js",
+		"/D/Valmet/devenv/sources/webhmi/webhmi/app/bower_components/platform-common/models/component/base/tooltip.js",
+		"/D/Valmet/devenv/sources/webhmi/platform-common/models/component/base/tooltip.js",
+		"/D/Valmet/devenv/sources/webhmi/webhmi/app/bower_components/platform-common/models/component/base/draggable.js",
+		"/C/Users/doodlez/AppData/Roaming/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/C/Users/doodlez/AppData/Roaming/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/D/Valmet/devenv/sources/hmi.sublime-project",
+		"/C/Users/doodlez/.bashrc"
+	],
+	"find":
+	{
+		"height": 43.0
+	},
+	"find_in_files":
+	{
+		"height": 117.0,
+		"where_history":
+		[
+			"D:\\CursProj\\Algoteacher\\src",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common\\models",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-installer",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-designer",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-demo-applications",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-installer",
+			"D:\\Valmet\\devenv\\sources\\engineering\\engineering-common",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\hmi-content-importer",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-designer",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components\\xy-plot",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components\\trend",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components\\xy-plot",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components\\trend",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\hmi-content-importer",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-server",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-installer",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-designer\\app\\js",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-installer",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-demo-applications",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components\\trend",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-demo-applications",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-installer",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common\\libs\\Plot2D",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components\\xy-plot",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common\\libs\\Plot2D",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common\\models\\component\\base",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-designer",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common\\libs\\Plot2D",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common\\libs\\Plot2D",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common\\libs\\Plot2D",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common\\models\\component",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common\\models",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common\\libs\\Plot2D",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components\\xy-plot\\renderers",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common\\libs\\Plot2D",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\webhmi-components",
+			"D:\\Valmet\\devenv\\sources\\webhmi\\platform-common\\libs\\Plot2D"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"spa",
+			"font-size",
+			"size",
+			"outlook.size.width",
+			"bindOutlookChanges",
+			"outlook",
+			"outlook.size",
+			"options",
+			"fontsize",
+			"options",
+			"plugToParentInput",
+			"styles",
+			"_initChangeNotifiers",
+			"hmi",
+			"trend__title",
+			"font",
+			"fontSize",
+			"somethingHasChanged",
+			"some",
+			"somt",
+			"something",
+			"somthing",
+			"@color__common__text",
+			"maven",
+			"color",
+			"isVertical",
+			"top",
+			"blue",
+			"@color__trend__text",
+			"@color__common__invert__text",
+			"Font",
+			"Fonts",
+			"Maven",
+			"font",
+			"$color__xyplot__text",
+			"inherit",
+			".x_ticks text",
+			"pro",
+			"@color__common__text--secondary",
+			"text",
+			"plot2d__vis text",
+			".hmi-xy-plot .plot2d__vis text",
+			"4c4",
+			"4c4d4f",
+			"#4c4d4f",
+			"@color__common__text",
+			"#4c4d4f",
+			"@color__common__text",
+			"#4c4d4f",
+			"font-size: inherit",
+			"getFontValueByName",
+			"font-size",
+			"font",
+			"fontSize",
+			"font",
+			"fot",
+			"11",
+			"13",
+			"titleHeight",
+			"titleOffset",
+			"isVertical",
+			"timeOffset",
+			"OPTIONAL_VALUE",
+			"getRelativeDiff",
+			"text",
+			"inhe",
+			"13",
+			"font",
+			"4c4d4f",
+			"small",
+			"s",
+			"size",
+			"s",
+			"30",
+			"position",
+			"legend.position",
+			"85",
+			"style",
+			"timeAxis",
+			"grid",
+			"position",
+			"popover__should-reposition",
+			"tick",
+			"time",
+			"font-size",
+			"font",
+			"Hydro Power Trends 2",
+			"@stroke__graph-vis__axis-layout",
+			"$stroke__graph-vis__axis-layout",
+			".x_grid .tick",
+			".plot2d__vis__graph-vis__axis-layout .x_grid .tick",
+			"#8F9092",
+			"8F9092",
+			"gridLineStyle",
+			"_gridLineStyle",
+			"gridLineStyle",
+			"definition",
+			".style",
+			"gridLineStyle",
+			"if (axis) {",
+			"if (axis) {\n     ",
+			"if (axis) {\n                   ",
+			"if (axis) {\n                        var scalesDefinition = axisDefinition.scales;",
+			"setGridLineStyle",
+			"grid",
+			"setGridLineStyle",
+			"render",
+			"x_grid",
+			"y_grid",
+			"this.gridVis",
+			"this.gridVis.call(this.gridAxis);",
+			"_drawGrid",
+			"updateRange",
+			"zoomUpdated",
+			"_updateLayoutHandler",
+			"_updateRelatimePosition",
+			"_update",
+			"updateLayout",
+			"vis",
+			"this.g",
+			"this.graph",
+			"this.gridVis",
+			"this.gridVis.call(this.gridAxis)",
+			"_range",
+			"axisOffset",
+			"mixinThinTickLines",
+			"labelHider",
+			"axisViewDrawAxis"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": true,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "src/Public/js/apps/home/views/MainView.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 556,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								17,
+								24
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/base16-eighties.dark (SL).tmTheme",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "src/Public/js/core/router.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 915,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								434,
+								434
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/base16-eighties.dark (SL).tmTheme",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 375.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/Public/js/apps/inbox/views/subviews/InboxView.js",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 571,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								361,
+								371
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/base16-eighties.dark (SL).tmTheme",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/Views/Home/Index.cshtml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 934,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								451,
+								451
+							]
+						],
+						"settings":
+						{
+							"color_scheme": "Packages/User/Color Highlighter/themes/base16-eighties.dark (SL).tmTheme",
+							"incomplete_sync": null,
+							"remote_loading": false,
+							"synced": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 33.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.sftp":
+	{
+		"height": 214.0
+	},
+	"pinned_build_system": "",
+	"project": "Curs.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"pip",
+				"platform-common\\models\\Pipe.js"
+			],
+			[
+				"dragg",
+				"platform-common\\models\\component\\base\\draggable.js"
+			],
+			[
+				"inputs",
+				"platform-common\\models\\component\\base\\inputsAndOutputs.js"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 356.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
