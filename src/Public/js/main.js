@@ -26,9 +26,28 @@ require.config({
 
 		'ApplicationRouter': {
 			deps: ['jQuery', 'Underscore', 'Backbone']
-		}
+		},
+		'mathjax': {
+            exports: "MathJax",
+            init: function () {
+                MathJax.Hub.Config({
+                    HTML: ["input/TeX","output/HTML-CSS"],
+                    TeX: { extensions: ["AMSmath.js","AMSsymbols.js"],
+                        equationNumbers: { autoNumber: "AMS" } },
+                    extensions: ["tex2jax.js"],
+                    jax: ["input/TeX","output/HTML-CSS"],
+                    tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                        processEscapes: true },
+                    "HTML-CSS": { availableFonts: ["TeX"],
+                        linebreaks: { automatic: true } }
+                });
+                MathJax.Hub.Startup.onload();
+                return MathJax;
+            }
+        }
 	},
-
+	// http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML&amp;delayStartupUntil=configured - удалённый путь
 	paths: {
 		jQuery: './../components/jquery/jquery',
 		Underscore: './../components/underscore/underscore',
@@ -37,7 +56,8 @@ require.config({
 		handlebars: './../components/require-handlebars-plugin/Handlebars',
 		hbs: './../components/require-handlebars-plugin/hbs',
 		i18nprecompile : './../components/require-handlebars-plugin/hbs/i18nprecompile',
-		json2 : './../components/require-handlebars-plugin/hbs/json2'
+		json2 : './../components/require-handlebars-plugin/hbs/json2',
+		mathjax: "./../components/mathJax/MathJax.js?config=TeX-AMS_HTML&amp;delayStartupUntil=configured"
 	}
 });
 
