@@ -27,6 +27,10 @@ require.config({
 		'ApplicationRouter': {
 			deps: ['jQuery', 'Underscore', 'Backbone']
 		},
+		'Matrix' : {
+			deps: ['matrix'],
+			exports: 'Matrix'
+		},
 		'mathjax': {
             exports: "MathJax",
             init: function () {
@@ -57,6 +61,7 @@ require.config({
 		hbs: './../components/require-handlebars-plugin/hbs',
 		i18nprecompile : './../components/require-handlebars-plugin/hbs/i18nprecompile',
 		json2 : './../components/require-handlebars-plugin/hbs/json2',
+		matrix : '/../components/matrix/matrix',
 		mathjax: "./../components/mathJax/MathJax.js?config=TeX-AMS_HTML&amp;delayStartupUntil=configured"
 	}
 });
