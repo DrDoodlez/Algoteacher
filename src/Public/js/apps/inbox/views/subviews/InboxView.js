@@ -16,7 +16,7 @@ define(function(require) {
 			var values = [ [1,2,3], [4,5,6] ];
 			var $matr1 = MatrixBuilder.create(values, 2, 3);
 
-			$("#matrix1").append($matr1);
+			this.$("#matrix1").append($matr1);
 			MatrixBuilder.highlightColumn($matr1,1);
 
 
