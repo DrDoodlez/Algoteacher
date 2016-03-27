@@ -26,6 +26,11 @@ require.config({
 
 		'ApplicationRouter': {
 			deps: ['jQuery', 'Underscore', 'Backbone']
+		},
+
+		'Matrix' : {
+			deps: ['matrix'],
+			exports: 'Matrix'
 		}
 	},
 
@@ -37,7 +42,8 @@ require.config({
 		handlebars: './../components/require-handlebars-plugin/Handlebars',
 		hbs: './../components/require-handlebars-plugin/hbs',
 		i18nprecompile : './../components/require-handlebars-plugin/hbs/i18nprecompile',
-		json2 : './../components/require-handlebars-plugin/hbs/json2'
+		json2 : './../components/require-handlebars-plugin/hbs/json2',
+		matrix : '/../components/matrix/matrix'
 	}
 });
 
