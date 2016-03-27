@@ -16,3 +16,5 @@ post-build*
 _ReSharper.*
 *deploy-to-ec2*
 *ncrunch*
+/*.sublime-workspace
+/*.sublime-project

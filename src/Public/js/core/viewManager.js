@@ -1,6 +1,7 @@
 define(function (require) {
 	var $ = require('jQuery');
 	var _ = require('Underscore');
+	var MathJax = require('mathjax');
 
 	var ViewManager = function () {
 		return {
@@ -9,15 +10,17 @@ define(function (require) {
 	};
 
 	function showView(view) {
-		debugger;
+		//debugger;
 		if (this.currentView) {
 			disposeView(this.currentView);
 		}
 
 		this.currentView = view;
 
-		$("#app").html(this.currentView.el);
+		$("#app").html(this.currentView.el);		
 		this.currentView.render();
+
+		MathJax.Hub.Queue(["Typeset",MathJax.Hub,"app"]);
 	}
 
 	function disposeView(view) {
