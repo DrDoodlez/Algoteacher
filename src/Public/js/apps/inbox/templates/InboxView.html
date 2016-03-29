@@ -1,9 +1,41 @@
+<!--div> $$ \sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6} $$ </div-->
 
-<div> $$ \sum_{i=0}^n i^2 = \frac{(n^2+n)(2n+1)}{6} $$ </div>
+<div>
+Исходные данные: 2 матрицы $A$ и $B$ размеров $M{\times}N$ и $N{\times}Q$ соответственно.</br>
 
-<div id="matrix1"></div>
+Результирующие данные: Матрица размера $ M{\times}Q $.</br>
 
-<table class="table table-hover">
+Описание алгоритма: целью данной задачи является получение новой матрицы из двух исходных.
+Количество строк новой матрицы будет равно колчеству строк первой исходной матрицы, а количество столбцов новой матрицы - количеству столбцов второй исходной матрицы.
+Каждый элемент новой матрицы на пересечении $i$ строки и $j$ столбца равен скалярному произведению i-ой строки матрицы $A$ и $j$ столбца матрицы $B$.</br>
+
+В приведенном ниже примере представлено перемножение первой строки матрицы $A$ на второй столбец матрицы $B$.</br></br>
+
+<div class="row; outer">
+<div id="matrix1" class="matrix-container"></div>
+<div class="matrix-container" style="font-size: 20px">${\cdot}$</div>
+<div id="matrix2" class="matrix-container"></div>
+<div class="matrix-container" style="font-size: 20px">$=$</div>
+<div class="matrix-container" style="font-size: 20px">$4{\cdot}2 + 5{\cdot}4 + 6{\cdot}6$</div>
+<div class="matrix-container" style="font-size: 20px">$=$</div>
+<div class="matrix-container" style="font-size: 20px">$64$</div>
+</div>
+
+На каждом шаге алгоритма происходит перемножение определенной строки первой матрицы с определенным столбцом второй матрицы.
+В итоге, каждая строка матрицы $A$ должна быть перемножена с каждым столбцом матрицы $B$.</br>
+
+В примере ниже приведен пример перемножения матриц.</br></br>
+
+<div class="row; outer">
+<div id="matrix3" class="matrix-container"></div>
+<div class="matrix-container" style="font-size: 20px">${\cdot}$</div>
+<div id="matrix4" class="matrix-container"></div>
+<div class="matrix-container" style="font-size: 20px">$=$</div>
+<div id="matrix5" class="matrix-container"></div>
+</div>
+</div>
+
+<!--table class="table table-hover">
 	<thead>
 		<th></th>
 		<th>Subject</th>
@@ -12,4 +44,4 @@
 	</thead>
 	<tbody class="mails">
 	</tbody>
-</table>
+</table-->
