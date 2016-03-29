@@ -7,11 +7,13 @@
   font-size: 20px;
   border-collapse: inherit;
   border-spacing: 0;
+  padding: 10px;
 }
 
 .matrix_cell {
     padding: 15px;
+    border-radius: 50px;
 }
 .matrix_cell--active {
-  background: red;
+  background: #85adad;
 }
