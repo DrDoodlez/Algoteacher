@@ -2,22 +2,10 @@
 {
     public class Task
     {
-        public string Description
-        {
-            get;
-            set;
-        }
+        public string Name { get; set; }
 
-        public string DueDate
-        {
-            get;
-            set;
-        }
+        public string Label { get; set; }
 
-        public string Done
-        {
-            get;
-            set;
-        }
+        public string IntroText { get; set; }
     }
 }

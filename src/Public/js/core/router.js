@@ -8,7 +8,7 @@ define(function(require) {
 		},
 
 		routes: {
-			'': 'home',
+			'': 'tasks',
 			'info': 'info',
 			'learning': 'learning',
 			'settings': 'settings', 

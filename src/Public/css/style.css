@@ -12,3 +12,7 @@ body {
 	align-items: center;
 	justify-content: center;
 }
+
+.task-list {
+    width: 500px;
+    margin-left: 30%;

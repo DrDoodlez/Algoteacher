@@ -2,12 +2,19 @@ define(function (require) {
 	var Backbone = require('Backbone');
 
 	var EmailView = Backbone.View.extend({
-		tagName: 'tr',
+        tagName: "a",
 
-		template: require('hbs!./../../templates/TaskView'),
+        className: "list-group-item",
+
+        attributes: {
+            href: "/inbox"
+        },
+
+		//template: require('hbs!./../../templates/TaskView'),
 
 		render: function () {
-			this.$el.html(this.template(this.model.toJSON()));
+            var model = this.model.toJSON();
+			this.$el.html(model.label);
 			return this;
 		}
 	});

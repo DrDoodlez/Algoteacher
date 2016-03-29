@@ -12,10 +12,10 @@ define(function(require) {
 		render: function () {
 			this.$el.html(this.template());
 
-			var mails = this.$('.tasks');
-			this.collection.forEach(function (mail) {
-				var view = new TaskView({model: mail});
-				mails.append(view.render().el);
+			var $list = this.$('#task-list');
+			this.collection.forEach(function (task) {
+				var view = new TaskView({model: task});
+				$list.append(view.render().el);
 				this.subviews.push(view);
 			}, this);
 
