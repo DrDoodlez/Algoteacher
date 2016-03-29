@@ -29,6 +29,7 @@ require.config({
 		},
 
 		'MatrixBuilder' : {
+			deps: ['jQuery'],
 			exports: 'MatrixBuilder'
 		},
 
