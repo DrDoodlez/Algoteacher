@@ -2,9 +2,13 @@ define(function (require) {
 	var Backbone = require('Backbone');
 
 	var EmailView = Backbone.View.extend({
-        tagName: "li",
+        tagName: "a",
 
         className: "list-group-item",
+
+        attributes: {
+            href: "/inbox"
+        },
 
 		//template: require('hbs!./../../templates/TaskView'),
 
