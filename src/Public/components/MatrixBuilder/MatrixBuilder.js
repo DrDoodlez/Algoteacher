@@ -71,5 +71,3 @@ define(
 
     return MatrixBuilder;
 });
-
-  

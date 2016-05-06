@@ -33,6 +33,11 @@ require.config({
 			exports: 'MatrixBuilder'
 		},
 
+		'Animation' : {
+			deps: ['jQuery'],
+			exports: 'Animation'
+		},
+
 		'mathjax': {
             exports: "MathJax",
             init: function () {
@@ -64,7 +69,8 @@ require.config({
 		i18nprecompile : './../components/require-handlebars-plugin/hbs/i18nprecompile',
 		json2 : './../components/require-handlebars-plugin/hbs/json2',
 		MatrixBuilder : './../components/MatrixBuilder/MatrixBuilder',
-		mathjax: "./../components/mathJax/MathJax.js?config=TeX-AMS_HTML&amp;delayStartupUntil=configured"
+		mathjax: "./../components/mathJax/MathJax.js?config=TeX-AMS_HTML&amp;delayStartupUntil=configured",
+		Animation : './../components/Animation/Animation'
 	}
 });
 
@@ -77,4 +83,8 @@ require(['core/router', 'core/client', 'Backbone'], function (Router, client, Ba
 	client.setup(window, app);
 
 	Backbone.history.start({ pushState: true });
+
+	window.onload = function() {
+  		window.Router.navigate('home', {trigger: true});
+	};
 });

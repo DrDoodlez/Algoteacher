@@ -2,6 +2,7 @@ define(function(require) {
 	var Backbone = require('Backbone');
 	//var EmailView = require('./EmailView');
 	var MatrixBuilder = require('MatrixBuilder');
+	var Animation = require('Animation');
 
 	var InboxView = Backbone.View.extend({
 		template: require('hbs!./../../templates/InboxView'),
@@ -13,7 +14,9 @@ define(function(require) {
 		render: function () {
 			this.$el.html(this.template());
 
-			var values1 = [ [1,2,3], [4,5,6] ];
+			console.log(this.template());
+
+			var values1 = [[1,2,3], [4,5,6]];
 			var $matr1 = MatrixBuilder.create(values1, 2, 3);
 
 			var values2 = [[1,2], [3,4], [5,6]];
@@ -38,13 +41,14 @@ define(function(require) {
 			this.$("#matrix4").append($matr4);
 			this.$("#matrix5").append($matr5);
 
-			/*var mails = this.$('.mails');
-			this.collection.forEach(function (mail) {
-				var view = new EmailView({model: mail});
-				mails.append(view.render().el);
-				this.subviews.push(view);
-			}, this);*/
+			var query = this.$(".learning-div");
+			Animation.animateQueryOpacity(query);
 
+			// this.$("#matrix1").on("mouseover", function(){
+			// 	$("#ggg .mn")[0].innerText = 666;
+			// 	Animation.Animation($("#div1"));
+			// 	//$("#div1").fadeTo(5500, 1);
+			// });
 			return this;
 		}
 	});
