@@ -14,7 +14,6 @@ define(function(require) {
 			'settings': 'settings', 
 			'inbox': 'inbox',
 			'inbox/compose': 'inboxCompose',
-			'contacts': 'contacts',
 			'tasks': 'tasks'
 		},
 
@@ -28,10 +27,6 @@ define(function(require) {
 
 		inboxCompose: function () {
 			require('./../apps/inbox/subapps/compose/app').run(this.viewManager);
-		},
-
-		contacts: function () {
-			require('./../apps/contacts/app').run(this.viewManager);
 		},
 
 		tasks: function () {

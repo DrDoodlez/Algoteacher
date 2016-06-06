@@ -26,7 +26,7 @@ define(
             _.each(query, function(element, i) {
                 _.delay(function() {
                     animateFunc($(element));
-                }, 4000 * i);
+                }, 1000 * i);
             });
         };
 

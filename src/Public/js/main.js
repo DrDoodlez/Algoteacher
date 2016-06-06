@@ -38,6 +38,11 @@ require.config({
 			exports: 'Animation'
 		},
 
+        'StepControl' : {
+            deps: ['jQuery'],
+            exports: 'StepControl'
+        },
+
 		'mathjax': {
             exports: "MathJax",
             init: function () {
@@ -70,7 +75,8 @@ require.config({
 		json2 : './../components/require-handlebars-plugin/hbs/json2',
 		MatrixBuilder : './../components/MatrixBuilder/MatrixBuilder',
 		mathjax: "./../components/mathJax/MathJax.js?config=TeX-AMS_HTML&amp;delayStartupUntil=configured",
-		Animation : './../components/Animation/Animation'
+		Animation : './../components/Animation/Animation',
+        StepControl : './../components/StepControl/StepControl'
 	}
 });
 

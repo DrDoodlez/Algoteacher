@@ -3,6 +3,8 @@ define(function(require) {
 	//var EmailView = require('./EmailView');
 	var MatrixBuilder = require('MatrixBuilder');
 	var Animation = require('Animation');
+	var MathJax = require('mathjax');
+	var StepControl = require('StepControl');
 
 	var InboxView = Backbone.View.extend({
 		template: require('hbs!./../../templates/InboxView'),
@@ -32,7 +34,7 @@ define(function(require) {
 			var $matr5 = MatrixBuilder.create(values5, 2, 2);
 
 			this.$("#matrix1").append($matr1);
-			MatrixBuilder.highlightRow($matr1, 1);
+			MatrixBuilder.highlightRow($matr1, 0);
 
 			this.$("#matrix2").append($matr2);
 			MatrixBuilder.highlightColumn($matr2, 1);
@@ -41,9 +43,47 @@ define(function(require) {
 			this.$("#matrix4").append($matr4);
 			this.$("#matrix5").append($matr5);
 
+			
+			// var elements = [
+			// 	"$c_{11}$",
+			// 	"$ = (a_{11}, ... , a_{13}) \\cdot (b_{12}, ... , b_{32})$",
+			// 	"$ = a_{11} \\cdot b_{12} +  ... + a_{13} \\cdot b_{32}$",
+			// 	"$ = a_{11} \\cdot b_{12} +  ... + a_{13} \\cdot b_{32}$",
+			// 	"$ = 4 \\cdot 2 + 5 \\cdot 4 + 6 \\cdot 6$",
+			// 	"$ = 8 + 20 + 36$",
+			// 	"$ = 64$"
+			// ]
+			var elements = [
+				" ",
+				"$ (a_{11}, ... , a_{13}) \\cdot (b_{12}, ... , b_{32})$",
+				"$ a_{11} \\cdot b_{12} +  ... + a_{13} \\cdot b_{32}$",
+				"$ a_{11} \\cdot b_{12} +  ... + a_{13} \\cdot b_{32}$",
+				"$ 4 \\cdot 2 + 5 \\cdot 4 + 6 \\cdot 6$",
+				"$ 8 + 20 + 36$",
+				"$ 64$"
+			]
+
+			var formula1 = new StepControl(elements);
+			this.$("#resultEx1").append(formula1.layout());
+
 			var query = this.$(".learning-div");
 			Animation.animateQueryOpacity(query);
 
+
+
+			
+			// this.$("#matrix1").on("mouseover", function(){
+			// 	$("#MathExample")[0].innerText = "$a + b + c = 3 \\cdot 3$"
+			// 	var math = MathJax.Hub.getAllJax("ggg")[0];
+			// 	MathJax.Hub.Queue(["Text",math,"x+1"]);
+			// 	MathJax.Hub.Queue(["Rerender",math]);
+			// });
+
+			// this.$("#matrix2").on("mouseover", function(){
+			// 	MathJax.Hub.Queue(["Typeset",MathJax.Hub,"MathExample"]);
+			// });
+
+			
 			// this.$("#matrix1").on("mouseover", function(){
 			// 	$("#ggg .mn")[0].innerText = 666;
 			// 	Animation.Animation($("#div1"));

@@ -4,6 +4,21 @@
     text-align: center;
 }
 
+.formula-container {
+    float: left;
+    margin-left: 15px;
+    text-align: left;
+    font-size: 20px;
+}
+
+.step-control__next-button, .step-control__reset-button {
+    font-size: 14px;
+}
+
+.step-control__item{
+    width: 300px;
+}
+
 .outer {
 	display: flex;
 	align-items: center;
