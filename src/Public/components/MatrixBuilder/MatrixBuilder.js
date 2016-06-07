@@ -3,7 +3,7 @@ define(
     function(require){
 
     function createCell(value, row, col) {
-      return $("<td class='" + classes.cell + "'>" +  value + "</td>");
+      return $("<td id='" + (10 * (row + 1) + (col + 1)) + "' class='" + classes.cell + "'>" +  value + "</td>");
     };
 
     function createRow(){
@@ -25,7 +25,9 @@ define(
         for (var i = 0; i < rows; i++) {
           var $row = createRow();
           for(var j = 0; j < columns; j++){
-            var $cell = createCell(values[i][j],i, j);
+            var $cell = createCell(values[i][j], i, j);
+            $cell.data("row", i);
+            $cell.data("col", j);
             $row.append($cell);
           }
           $matrix.append($row);
@@ -33,7 +35,7 @@ define(
         return $matrix;
       },
 
-      highlightCell: function ($matrix ,i, j) {
+      highlightCell: function ($matrix , i, j) {
         var $row = $($matrix.find("." + classes.row)[i]);
         var $cell = $($row.find("." + classes.cell)[j]);
         $cell.addClass(classes.active);
@@ -67,7 +69,6 @@ define(
 
     //MatrixBuilder.highlightCell(matr1,1,1);
     //MatrixBuilder.highlightColumn(matr1,1);
-  
 
     return MatrixBuilder;
 });
