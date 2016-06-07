@@ -44,11 +44,18 @@ define(function(require) {
 			var query = this.$(".learning-div");
 			Animation.animateQueryOpacity(query);
 
-			// this.$("#matrix1").on("mouseover", function(){
-			// 	$("#ggg .mn")[0].innerText = 666;
-			// 	Animation.Animation($("#div1"));
-			// 	//$("#div1").fadeTo(5500, 1);
-			// });
+			this.$("#matrix5").find(".matrix_cell").on("mouseover", function(){
+			 	MatrixBuilder.highlightRow($matr3, $(this).data().row);
+			 	MatrixBuilder.highlightColumn($matr4, $(this).data().col);
+			 	MatrixBuilder.highlightCell($matr5, $(this).data().row, $(this).data().col);
+			});
+			
+			this.$("#matrix5").find(".matrix_cell").on("mouseout", function(){
+			 	MatrixBuilder.resetAll($matr3);
+			 	MatrixBuilder.resetAll($matr4);
+			 	MatrixBuilder.resetAll($matr5);
+			});
+
 			return this;
 		}
 	});
