@@ -43,6 +43,11 @@ require.config({
             exports: 'StepControl'
         },
 
+        'StepMatrixControl' : {
+            deps: ['jQuery'],
+            exports: 'StepMatrixControl'
+        },
+
 		'mathjax': {
             exports: "MathJax",
             init: function () {
@@ -76,7 +81,8 @@ require.config({
 		MatrixBuilder : './../components/MatrixBuilder/MatrixBuilder',
 		mathjax: "./../components/mathJax/MathJax.js?config=TeX-AMS_HTML&amp;delayStartupUntil=configured",
 		Animation : './../components/Animation/Animation',
-        StepControl : './../components/StepControl/StepControl'
+        StepControl : './../components/StepControl/StepControl',
+        StepMatrixControl : './../components/StepControl/StepMatrixControl'
 	}
 });
 
