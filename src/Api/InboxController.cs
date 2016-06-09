@@ -9,22 +9,21 @@ namespace Algoteacher.Api
 {
     public class InboxController : ApiController
     {
-        private readonly EmailsRepository _emailRepository;
+        private readonly SchemaRepository _schemaRepository;
 
         public InboxController()
         {
-            _emailRepository = new EmailsRepository();
+            _schemaRepository = new SchemaRepository();
         }
 
-        public IEnumerable<Email> GetEmails()
+        public IEnumerable<Schema> GetSchemas()
         {
-            return _emailRepository.All;
+            return _schemaRepository.All;
         }
 
-        public HttpResponseMessage PostEmail(Email message)
+        public Schema GetSchema(string id)
         {
-            _emailRepository.Save(message);
-            return Request.CreateResponse(HttpStatusCode.Created, message);
+            return _schemaRepository.GetById(id);
         }
     }
 }

@@ -1,9 +1,9 @@
 define(function (require) {
 	var Backbone = require('Backbone');
-	var Email = require('./../models/Email');
+	var Schema = require('./../models/Schema');
 
 	var InboxCollection = Backbone.Collection.extend({
-		model: Email,
+		model: Schema,
 
 		url: '/api/inbox'
 	});

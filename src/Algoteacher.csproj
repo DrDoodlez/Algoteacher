@@ -109,6 +109,7 @@
   <ItemGroup>
     <Compile Include="Api\ContactsController.cs" />
     <Compile Include="Api\InboxController.cs" />
+    <Compile Include="Models\Repositories\SchemaRepository.cs" />
     <Compile Include="Api\TasksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\InboxController.cs" />
@@ -116,9 +117,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Contact.cs" />
-    <Compile Include="Models\Email.cs" />
+    <Compile Include="Models\Schema.cs" />
     <Compile Include="Models\Repositories\ContactsRepository.cs" />
-    <Compile Include="Models\Repositories\EmailsRepository.cs" />
     <Compile Include="Models\Repositories\TasksRepository.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -1196,11 +1196,7 @@
     <Content Include="Public\js\apps\home\views\MainView.js" />
     <Content Include="Public\js\apps\inbox\app.js" />
     <Content Include="Public\js\apps\inbox\collections\InboxCollection.js" />
-    <Content Include="Public\js\apps\inbox\models\Email.js" />
-    <Content Include="Public\js\apps\inbox\subapps\compose\app.js" />
-    <Content Include="Public\js\apps\inbox\subapps\compose\templates\ComposeEmailView.html" />
-    <Content Include="Public\js\apps\inbox\subapps\compose\views\MainView.js" />
-    <Content Include="Public\js\apps\inbox\subapps\compose\views\subviews\ComposeEmailView.js" />
+    <Content Include="Public\js\apps\inbox\models\Schema.js" />
     <Content Include="Public\js\apps\inbox\templates\ButtonsView.html" />
     <Content Include="Public\js\apps\inbox\templates\EmailView.html" />
     <Content Include="Public\js\apps\inbox\templates\InboxView.html" />
@@ -1231,14 +1227,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Public\js\apps\inbox\subapps\compose\collections\" />
-    <Folder Include="Public\js\apps\inbox\subapps\compose\models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\Index.cshtml" />

@@ -16,7 +16,8 @@ define(function(require) {
 		render: function () {
 			this.$el.html(this.template());
 
-			console.log(this.template());
+
+			console.log(this.options.teachSchema.Data);
 
 			var values1 = [[1,2,3], [4,5,6]];
 			var $matr1 = MatrixBuilder.create(values1, 2, 3);
