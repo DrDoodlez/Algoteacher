@@ -108,11 +108,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\ContactsController.cs" />
-    <Compile Include="Api\InboxController.cs" />
+    <Compile Include="Api\TeachController.cs" />
     <Compile Include="Models\Repositories\SchemaRepository.cs" />
     <Compile Include="Api\TasksController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\InboxController.cs" />
+    <Compile Include="Controllers\TeachController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1194,16 +1194,14 @@
     <Content Include="Public\js\apps\home\views\FooterView.js" />
     <Content Include="Public\js\apps\home\views\HeaderView.js" />
     <Content Include="Public\js\apps\home\views\MainView.js" />
-    <Content Include="Public\js\apps\inbox\app.js" />
-    <Content Include="Public\js\apps\inbox\collections\InboxCollection.js" />
-    <Content Include="Public\js\apps\inbox\models\Schema.js" />
-    <Content Include="Public\js\apps\inbox\templates\ButtonsView.html" />
-    <Content Include="Public\js\apps\inbox\templates\EmailView.html" />
-    <Content Include="Public\js\apps\inbox\templates\InboxView.html" />
-    <Content Include="Public\js\apps\inbox\views\MainView.js" />
-    <Content Include="Public\js\apps\inbox\views\subviews\ButtonsView.js" />
-    <Content Include="Public\js\apps\inbox\views\subviews\EmailView.js" />
-    <Content Include="Public\js\apps\inbox\views\subviews\InboxView.js" />
+    <Content Include="Public\js\apps\teach\app.js" />
+    <Content Include="Public\js\apps\teach\collections\SchemaCollection.js" />
+    <Content Include="Public\js\apps\teach\models\Schema.js" />
+    <Content Include="Public\js\apps\teach\templates\EmptyView.html" />
+    <Content Include="Public\js\apps\teach\templates\TeachView.html" />
+    <Content Include="Public\js\apps\teach\views\MainView.js" />
+    <Content Include="Public\js\apps\teach\views\subviews\EmptyView.js" />
+    <Content Include="Public\js\apps\teach\views\subviews\TeachView.js" />
     <Content Include="Public\js\apps\tasks\app.js" />
     <Content Include="Public\js\apps\tasks\collections\TasksCollection.js" />
     <Content Include="Public\js\apps\tasks\models\Task.js" />

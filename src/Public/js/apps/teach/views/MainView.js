@@ -1,7 +1,7 @@
 define(function(require) {
 	var Backbone = require('Backbone');
 
-	var InboxView = require('./subviews/InboxView');
+	var TeachView = require('./subviews/TeachView');
 	var EmptyView = require('./subviews/EmptyView');
 
 	var MainView = Backbone.View.extend({
@@ -16,7 +16,7 @@ define(function(require) {
 			// Сейчас смотрим какое имя схемы пришло, и грузим определённое Вью. 
 			// В будущем нужно создавать вью на основе схемы!!
 			if (schema.name == "matrix mult"){
-				view = new InboxView({teachSchema: schema});
+			    view = new TeachView({ teachSchema: schema });
 			}
 			else {
 				view = new EmptyView({teachSchema: schema});

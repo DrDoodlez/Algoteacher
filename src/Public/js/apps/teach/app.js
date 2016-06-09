@@ -1,5 +1,5 @@
 define(function (require) {
-	var InboxCollection = require('./collections/InboxCollection');
+    var SchemaCollection = require('./collections/SchemaCollection');
 	var Schema = require('./models/Schema');
 	var MainView = require('./views/MainView');
 

@@ -7,11 +7,11 @@ using Algoteacher.Models.Repositories;
 
 namespace Algoteacher.Api
 {
-    public class InboxController : ApiController
+    public class TeachController : ApiController
     {
         private readonly SchemaRepository _schemaRepository;
 
-        public InboxController()
+        public TeachController()
         {
             _schemaRepository = new SchemaRepository();
         }

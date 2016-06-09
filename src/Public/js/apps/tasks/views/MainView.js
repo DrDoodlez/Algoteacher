@@ -9,9 +9,9 @@ define(function(require) {
 		},
 
 		render: function () {
-			var contactsView = new TasksView({collection: this.collection});
-			this.$el.append(contactsView.render().el);
-			this.subviews.push(contactsView);
+			var tasksView = new TasksView({collection: this.collection});
+			this.$el.append(tasksView.render().el);
+			this.subviews.push(tasksView);
 
 			return this;
 		}

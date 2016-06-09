@@ -6,8 +6,8 @@ define(function(require) {
 	var MathJax = require('mathjax');
 	var StepControl = require('StepControl');
 
-	var InboxView = Backbone.View.extend({
-		template: require('hbs!./../../templates/InboxView'),
+	var TeachView = Backbone.View.extend({
+		template: require('hbs!./../../templates/TeachView'),
 
 		initialize: function () {
 			this.subviews = [];
@@ -105,5 +105,5 @@ define(function(require) {
 		}
 	});
 
-	return InboxView;
+	return TeachView;
 });

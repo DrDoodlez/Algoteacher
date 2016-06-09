@@ -8,6 +8,5 @@ namespace Algoteacher.Controllers
         {
             return View("Index");
         }
-
     }
 }

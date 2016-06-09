@@ -12,7 +12,7 @@ define(function(require) {
 			'info': 'info',
 			'learning': 'learning',
 			'settings': 'settings', 
-			'inbox/:page': 'inbox',
+			'teach/:page': 'teach',
 			'tasks': 'tasks'
 		},
 
@@ -20,8 +20,8 @@ define(function(require) {
 			require('./../apps/home/app').run(this.viewManager);
 		},
 
-		inbox: function (page) {
-			require('./../apps/inbox/app').run(this.viewManager, page);
+		teach: function (page) {
+		    require('./../apps/teach/app').run(this.viewManager, page);
 		},
 
 		tasks: function () {
