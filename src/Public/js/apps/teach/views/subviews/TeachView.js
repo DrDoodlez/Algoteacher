@@ -7,8 +7,8 @@ define(function(require) {
 	var StepControl = require('StepControl');
 	var StepMatrixControl = require('StepMatrixControl');
 
-	var InboxView = Backbone.View.extend({
-		template: require('hbs!./../../templates/InboxView'),
+	var TeachView = Backbone.View.extend({
+		template: require('hbs!./../../templates/TeachView'),
 
 		initialize: function () {
 			this.subviews = [];
@@ -17,7 +17,8 @@ define(function(require) {
 		render: function () {
 			this.$el.html(this.template());
 
-			console.log(this.template());
+
+			console.log(this.options.teachSchema.Data);
 
 			var values1 = [["$a_{11}$", "$a_{12}$", "$a_{13}$"], ["$a_{21}$", "$a_{22}$", "$a_{23}$"]];
 			var $matr1 = MatrixBuilder.create(values1, 2, 3);
@@ -107,5 +108,5 @@ define(function(require) {
 		}
 	});
 
-	return InboxView;
+	return TeachView;
 });

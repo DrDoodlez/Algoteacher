@@ -1,29 +1,31 @@
 ﻿namespace Algoteacher.Models
 {
-    public class Email
+    public class Schema
     {
-        public string Subject
+        public string Data
         {
             get;
             set;
         }
 
-        public string Message
+        public string Title
         {
             get;
             set;
         }
 
-        public string Priority
+        public string Name
         {
             get;
             set;
+
         }
 
-        public string SentDate
+        public string Id
         {
             get;
             set;
+
         }
     }
 }

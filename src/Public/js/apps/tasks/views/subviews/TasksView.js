@@ -2,7 +2,7 @@ define(function(require) {
 	var Backbone = require('Backbone');
 	var TaskView = require('./TaskView');
 
-	var InboxView = Backbone.View.extend({
+	var TasksView = Backbone.View.extend({
 		template: require('hbs!./../../templates/TasksView'),
 
 		initialize: function () {
@@ -23,5 +23,5 @@ define(function(require) {
 		}
 	});
 
-	return InboxView;
+	return TasksView;
 });

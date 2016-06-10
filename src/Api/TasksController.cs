@@ -15,7 +15,7 @@ namespace Algoteacher.Api
             //_tasksRepository = new TasksRepository();
             _tasks = new List<Task> {
                 new Task { 
-                    Name = "matrix_mult", 
+                    Name = "matrixmult", 
                     Label = "Перемножение матриц",
                     IntroText = "Доброго времени суток, дружище! Не желаешь ли научиться перемножать матрицы?"
                     },

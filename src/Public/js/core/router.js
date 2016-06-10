@@ -12,8 +12,7 @@ define(function(require) {
 			'info': 'info',
 			'learning': 'learning',
 			'settings': 'settings', 
-			'inbox': 'inbox',
-			'inbox/compose': 'inboxCompose',
+			'teach/:page': 'teach',
 			'tasks': 'tasks'
 		},
 
@@ -21,12 +20,8 @@ define(function(require) {
 			require('./../apps/home/app').run(this.viewManager);
 		},
 
-		inbox: function () {
-			require('./../apps/inbox/app').run(this.viewManager);
-		},
-
-		inboxCompose: function () {
-			require('./../apps/inbox/subapps/compose/app').run(this.viewManager);
+		teach: function (page) {
+		    require('./../apps/teach/app').run(this.viewManager, page);
 		},
 
 		tasks: function () {

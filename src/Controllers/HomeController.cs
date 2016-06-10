@@ -4,10 +4,9 @@ namespace Algoteacher.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string path)
         {
-            return View();
+            return View("Index");
         }
-
     }
 }

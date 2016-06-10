@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace Algoteacher.Controllers
 {
-    public class InboxController : Controller
+    public class TeachController : Controller
     {
         //
-        // GET: /Inbox/
+        // GET: /Teach/
 
         public ActionResult Index()
         {
