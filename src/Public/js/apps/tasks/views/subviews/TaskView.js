@@ -1,18 +1,21 @@
-define(function (require) {
-	var Backbone = require('Backbone');
+define([
+    "Backbone"
+], function(
+    Backbone
+) {
 
-	var TaskView = Backbone.View.extend({
+    var TaskView = Backbone.View.extend({
         tagName: "a",
 
         className: "list-group-item",
 
-		render: function () {
+        render: function() {
             var model = this.model.toJSON();
             this.$el.attr("href", "/teach/" + model.name);
-			this.$el.html(model.label);
-			return this;
-		}
-	});
+            this.$el.html(model.label);
+            return this;
+        }
+    });
 
-	return TaskView;
+    return TaskView;
 });

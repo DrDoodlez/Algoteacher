@@ -14,11 +14,18 @@
 // });
 
 define(
-    'Animation',
-    function(require) {
+    "Animation",
+    [
+        "underscore",
+        "jquery",
+    ],
+    function(
+        _,
+        $
+    ) {
 
         function elementOpacity($name) {
-            $name.css({opacity:0});
+            $name.css({ opacity:0 });
             $name.fadeTo(5000, 1);
         };
 

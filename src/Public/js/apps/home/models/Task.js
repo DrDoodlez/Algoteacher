@@ -1,9 +1,11 @@
-define(function(require) {
-	var Backbone = require('Backbone');
+define([
+    "Backbone"
+], function(
+	Backbone
+) {
+    var Task = Backbone.Model.extend({
+        urlRoot: "/api/tasks"
+    });
 
-	var Task = Backbone.Model.extend({
-		urlRoot: '/api/tasks'
-	});
-
-	return Task;
+    return Task;
 });

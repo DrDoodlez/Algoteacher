@@ -1,16 +1,21 @@
-define(function (require) {
-	var Backbone = require('Backbone');
+define([
+    "Backbone",
+    "text!./../../templates/EmptyView.html"
+], function(
+    Backbone,
+    EmptyViewTemplate
+) {
 
-	var EmptyView = Backbone.View.extend({
-		tagName: 'div',
+    var EmptyView = Backbone.View.extend({
+        tagName: "div",
 
-		template: require('hbs!./../../templates/EmptyView'),
+        template: EmptyViewTemplate,
 
-		render: function () {
-			this.$el.html(this.template({title: this.options.teachSchema.title}));
-			return this;
-		}
-	});
+        render: function() {
+            this.$el.html(this.template({ title: this.options.teachSchema.title }));
+            return this;
+        }
+    });
 
-	return EmptyView;
+    return EmptyView;
 });

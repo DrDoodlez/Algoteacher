@@ -1,33 +1,42 @@
-define(function(require) {
-	var Backbone = require('Backbone');
-	var ViewManager = require('./ViewManager');
+define([
+    "Backbone",
+    "./ViewManager",
+    "./../apps/home/app",
+    "./../apps/teach/app",
+    "./../apps/tasks/app"
+], function(
+    Backbone,
+    ViewManager,
+    HomeApp,
+    TeachApp,
+    TaskApp
+) {
+    var Router = Backbone.Router.extend({
+        initialize: function() {
+            this.viewManager = new ViewManager();
+        },
 
-	var Router = Backbone.Router.extend({
-		initialize: function () {
-			this.viewManager = new ViewManager();
-		},
+        routes: {
+            "": "tasks",
+            "info": "info",
+            "learning": "learning",
+            "settings": "settings",
+            "teach/:page": "teach",
+            "tasks": "tasks"
+        },
 
-		routes: {
-			'': 'tasks',
-			'info': 'info',
-			'learning': 'learning',
-			'settings': 'settings', 
-			'teach/:page': 'teach',
-			'tasks': 'tasks'
-		},
+        home: function() {
+            HomeApp.run(this.viewManager);
+        },
 
-		home: function () {
-			require('./../apps/home/app').run(this.viewManager);
-		},
+        teach: function(page) {
+            TeachApp.run(this.viewManager, page);
+        },
 
-		teach: function (page) {
-		    require('./../apps/teach/app').run(this.viewManager, page);
-		},
+        tasks: function() {
+            TaskApp.run(this.viewManager);
+        }
+    });
 
-		tasks: function () {
-			require('./../apps/tasks/app').run(this.viewManager);
-		}
-	});
-
-	return Router;
+    return Router;
 });

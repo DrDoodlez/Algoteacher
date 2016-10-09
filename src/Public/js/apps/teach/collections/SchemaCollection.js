@@ -1,12 +1,15 @@
-define(function (require) {
-	var Backbone = require('Backbone');
-	var Schema = require('./../models/Schema');
+define([
+    "Backbone",
+    "./../models/Schema"
+], function(
+    Backbone,
+    Schema
+) {
+    var SchemaCollection = Backbone.Collection.extend({
+        model: Schema,
 
-	var SchemaCollection = Backbone.Collection.extend({
-		model: Schema,
+        url: "/api/teach"
+    });
 
-		url: '/api/teach'
-	});
-
-	return SchemaCollection;
+    return SchemaCollection;
 });

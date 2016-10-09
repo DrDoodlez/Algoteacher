@@ -1,12 +1,15 @@
-define(function (require) {
-	var Backbone = require('Backbone');
-	var Task = require('./../models/Task');
+define([
+    "Backbone"
+], function(
+	Backbone
+) {
+    var Backbone = require("Backbone");
+    var Task = require("./../models/Task");
 
-	var ContactsCollection = Backbone.Collection.extend({
-		model: Task,
+    var ContactsCollection = Backbone.Collection.extend({
+        model: Task,
+        url: "/api/tasks"
+    });
 
-		url: '/api/tasks'
-	});
-
-	return ContactsCollection;
+    return ContactsCollection;
 });
