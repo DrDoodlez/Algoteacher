@@ -14,6 +14,18 @@ require.config({
             exports: "_"
         },
 
+        "lodash": {
+            exports: "lodash"
+        },
+
+        "drop": {
+            exports: "Drop"
+        },
+
+        "tether": {
+            exports: "Tether"
+        },
+
         "Backbone": {
             deps: ["Underscore", "jQuery"],
             exports: "Backbone"
@@ -48,6 +60,21 @@ require.config({
             exports: "StepMatrixControl"
         },
 
+        "ExpressionGenerator": {
+            deps: ["jQuery"],
+            exports: "ExpressionGenerator"
+        },
+
+        "MathIt": {
+            deps: ["jQuery"],
+            exports: "mathIt"
+        },
+
+        "rpnBuilder": {
+            deps: ["jQuery"],
+            exports: "rpnBuilder"
+        },
+
         "mathjax": {
             exports: "MathJax",
             init: function() {
@@ -72,8 +99,11 @@ require.config({
     paths: {
         jQuery: "./../components/jquery/jquery",
         Underscore: "./../components/underscore/underscore",
+        lodash: "./../components/lodash/lodash",
         underscore: "./../components/require-handlebars-plugin/hbs/underscore",
         Backbone: "./../components/backbone/backbone",
+        drop: "./../components/drop/dist/js/drop",
+        tether: "./../components/tether/dist/js/tether",
         handlebars: "./../components/require-handlebars-plugin/Handlebars",
         text: "./../components/require-handlebars-plugin/text",
         hbs: "./../components/require-handlebars-plugin/hbs",
@@ -83,7 +113,10 @@ require.config({
         mathjax: "./../components/mathJax/MathJax.js?config=TeX-AMS_HTML&amp;delayStartupUntil=configured",
         Animation : "./../components/Animation/Animation",
         StepControl : "./../components/StepControl/StepControl",
-        StepMatrixControl : "./../components/StepControl/StepMatrixControl"
+        StepMatrixControl : "./../components/StepControl/StepMatrixControl",
+        ExpressionGenerator: "./../components/common/expression-generator",
+        MathIt: "./../components/common/mathIt",
+        rpnBuilder: "./../components/common/rpnBuilder"
     }
 });
 

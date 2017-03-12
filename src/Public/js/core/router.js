@@ -17,7 +17,7 @@ define([
         },
 
         routes: {
-            "": "tasks",
+            "": "home",
             "info": "info",
             "learning": "learning",
             "settings": "settings",
