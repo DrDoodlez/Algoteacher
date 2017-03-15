@@ -3,13 +3,17 @@ define([
     "./ViewManager",
     "./../apps/home/app",
     "./../apps/teach/app",
-    "./../apps/tasks/app"
+    "./../apps/tasks/app",
+    "./../apps/login/app",
+    "./../apps/register/app",
 ], function(
     Backbone,
     ViewManager,
     HomeApp,
     TeachApp,
-    TaskApp
+    TaskApp,
+    LoginApp,
+    RegisterApp
 ) {
     var Router = Backbone.Router.extend({
         initialize: function() {
@@ -19,14 +23,22 @@ define([
         routes: {
             "": "home",
             "info": "info",
-            "learning": "learning",
-            "settings": "settings",
+            "login": "login",
+            "register": "register",
             "teach/:page": "teach",
             "tasks": "tasks"
         },
 
         home: function() {
             HomeApp.run(this.viewManager);
+        },
+
+        login: function() {
+            LoginApp.run(this.viewManager);
+        },
+
+        register: function() {
+            RegisterApp.run(this.viewManager);
         },
 
         teach: function(page) {
