@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
-using Algoteacher.Models;
-using Algoteacher.Models.Repositories;
+using EasyMath.Models;
+using EasyMath.Models.Repositories;
 
-namespace Algoteacher.Api
+namespace EasyMath.Api
 {
     public class TasksController : ApiController
     {

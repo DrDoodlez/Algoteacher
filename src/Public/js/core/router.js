@@ -23,8 +23,8 @@ define([
         routes: {
             "": "home",
             "info": "info",
-            "login": "login",
-            "register": "register",
+            "account/login": "login",
+            "account/register": "register",
             "teach/:page": "teach",
             "tasks": "tasks"
         },

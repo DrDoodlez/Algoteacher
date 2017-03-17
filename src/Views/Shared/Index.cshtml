@@ -1,34 +1,39 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>Algoteacher</title>
-    <link rel="stylesheet" type="text/css" href="/public/components/bootstrap/css/bootstrap.css">
+    <title>Easy Math</title>
     <link rel="stylesheet" type="text/css" href="/public/css/style.css">
-    <link rel="stylesheet" type="text/css" href="/public/components/bootstrap/css/bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="/public/css/Site.css">
     <link rel="stylesheet" type="text/css" href="/public/components/MatrixBuilder/matrix.css">
 
     <script type="text/javascript" src="/public/components/requirejs/require.js" data-main="/public/js/main.js"></script>
-    <script type="text/javascript" src="/public/components/requirejs/require.js" data-main="/public/components/bootstrap/js/bootstap.js"></script>
-    <script type="text/javascript" src="/public/components/jquery/jquery.js"></script>
-    
+    @*@Styles.Render("~/Content")*@
+    @*@Scripts.Render("~/bundles/modernizr")*@
+
 </head>
 <body>
     <div class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
-                <a class="navbar-brand" href="/">Algoteacher</a>
+                <a class="navbar-brand" href="/">Easy Math</a>
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="/tasks">Начнём</a></li>
-                <li><a href="/settings">Настройки</a></li>
-                <li><a href="/info">Информация</a></li>
+                <li><a href="/tasks">Старые задачи</a></li>
+                <li><a href="/account/login">Вход</a></li>
+                <li><a href="/account/register">Регистрация</a></li>
 
                 <!-- <li><a href="/teach">Обучение</a></li> -->
             </ul>
+            <label id="userName">Авторизируйтесь</label>
         </div>
     </div>
     <div class="container">
         <div id="app" class="container"></div>
     </div>
+
+    @*@Scripts.Render("~/bundles/bootstrap")*@
+    @*@RenderSection("scripts", required: false)*@
 </body>
 </html>

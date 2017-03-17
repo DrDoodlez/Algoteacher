@@ -26,6 +26,11 @@ require.config({
             exports: "Tether"
         },
 
+        "lettering": {
+            deps: ["jQuery"],
+            exports: "lettering"
+        },
+
         "Backbone": {
             deps: ["Underscore", "jQuery"],
             exports: "Backbone"
@@ -65,9 +70,13 @@ require.config({
             exports: "ExpressionGenerator"
         },
 
-        "MathIt": {
-            deps: ["jQuery"],
+        "mathIt": {
+            deps: ["jQuery", "lodash"],
             exports: "mathIt"
+        },
+
+        "knockout": {
+            exports: "ko"
         },
 
         "rpnBuilder": {
@@ -104,6 +113,8 @@ require.config({
         Backbone: "./../components/backbone/backbone",
         drop: "./../components/drop/dist/js/drop",
         tether: "./../components/tether/dist/js/tether",
+        knockout: "./../components/knockout/knockout",
+        lettering: "./../components/Lettering/jquery.lettering",
         handlebars: "./../components/require-handlebars-plugin/Handlebars",
         text: "./../components/require-handlebars-plugin/text",
         hbs: "./../components/require-handlebars-plugin/hbs",
@@ -115,14 +126,14 @@ require.config({
         StepControl : "./../components/StepControl/StepControl",
         StepMatrixControl : "./../components/StepControl/StepMatrixControl",
         ExpressionGenerator: "./../components/common/expression-generator",
-        MathIt: "./../components/common/mathIt",
+        mathIt: "./../components/common/mathIt",
         rpnBuilder: "./../components/common/rpnBuilder"
     }
 });
 
-require(["core/router", "core/client", "Backbone"], function(Router, client, Backbone) {
+require(["core/router", "core/client", "Backbone", "lettering"], function(Router, client, Backbone) {
     var app = {
-        root: "/"
+        root: ""
     };
 
     window.Router = new Router();

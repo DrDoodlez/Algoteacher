@@ -1,11 +1,13 @@
 define([
     "Backbone",
-    "jquery",
+    "jQuery",
+    "knockout",
     "Underscore",
     "text!./../templates/RegisterView.html"
 ], function(
     Backbone,
     $,
+    ko,
     _,
     RegisterTemplate
 ) {
@@ -14,37 +16,38 @@ define([
         initialize: function() {
             //this.subviews = [];
             //this.result = ko.observable();
-            this.user = ko.observable();
 
-            this.registerEmail = ko.observable();
-            this.registerPassword = ko.observable();
-            this.registerPassword2 = ko.observable();
         },
 
         render: function() {
             this.$el.html(this.template());
+            var $form = this.$el.find("#registerForm");
+            $form.on("submit", e => {
+                e.preventDefault();
+                var data = $form.serializeArray().reduce(function(obj, item) {
+                    obj[item.name] = item.value;
+                    return obj;
+                }, {});
+                this.register(data);
+            });
+        },
 
-            this.register = function() {
-                var self = this;
-                self.result("");
-                self.errors.removeAll();
-
-                var data = {
-                    Email: self.registerEmail(),
-                    Password: self.registerPassword(),
-                    ConfirmPassword: self.registerPassword2()
-                };
-
-                $.ajax({
-                    type: "POST",
-                    url: "Account/Register",
-                    contentType: "application/json; charset=utf-8",
-                    data: JSON.stringify(data)
-                }).done(function(d) {
-                    //self.result("Done!");
-                    console.log("Registered!" + d);
-                }).fail(()=>{console.error("Register Error");});
+        register: function(data) {
+            var self = this;
+            var data = {
+                Email: data.email,
+                Password: data.password,
+                ConfirmPassword: data.confpassword
             };
+
+            $.ajax("/api/Account/Register", {
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(data)
+            }).done(function(d) {
+                //self.result("Done!");
+                console.log("Registered!" + d);
+            }).fail(()=>{console.error("Register Error");});
         }
     });
 

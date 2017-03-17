@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Algoteacher.Models.Repositories
+namespace EasyMath.Models.Repositories
 {
     public class SchemaRepository
     {

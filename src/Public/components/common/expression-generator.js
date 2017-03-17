@@ -2,7 +2,7 @@ define(
     "ExpressionGenerator",
     [
         "lodash",
-        "jquery",
+        "jQuery",
     ],
     function(
         _,

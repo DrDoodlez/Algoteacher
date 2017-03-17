@@ -2,10 +2,10 @@
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using Algoteacher.Models;
-using Algoteacher.Models.Repositories;
+using EasyMath.Models;
+using EasyMath.Models.Repositories;
 
-namespace Algoteacher.Api
+namespace EasyMath.Api
 {
     public class TeachController : ApiController
     {

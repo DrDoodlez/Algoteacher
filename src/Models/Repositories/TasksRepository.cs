@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Algoteacher.Models.Repositories
+namespace EasyMath.Models.Repositories
 {
     public class TasksRepository
     {

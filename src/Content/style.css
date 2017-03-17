@@ -1,0 +1,79 @@
+text {
+    font-weight: 300;
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serf;
+    font-size: 22px;
+}
+
+div {
+    font-size: 22px;
+    padding-bottom: 5px;
+}
+
+#expression {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 40px;
+    font-size: 24px;
+}
+
+.matrix-container {
+    float: left;
+    margin-left: 15px;
+    text-align: center;
+}
+
+.formula-container {
+    float: left;
+    margin-left: 15px;
+    text-align: left;
+    font-size: 20px;
+}
+
+.step-control__next-button, .step-control__reset-button {
+    font-size: 14px;
+}
+
+.step-control__item{
+    width: 300px;
+}
+
+.outer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.task-list {
+    width: 500px;
+    margin-left: 30%;
+}
+
+.new {
+  opacity: 0;
+}
+
+.div_opacity {
+	-webkit-transition: opacity .2s ease-in-out;
+	-moz-transition: opacity .2s ease-in-out;
+	-ms-transition: opacity .2s ease-in-out;
+	-o-transition: opacity .2s ease-in-out;
+	transition: opacity .2s ease-in-out;
+	opacity: 1;
+}
+
+.text-typing {
+    width: 100ex;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    -webkit-animation: type 5s steps(50, end);
+    animation: type 5s steps(50, end);
+}
+
+@keyframes type{
+    from { width: 0; }
+}
+
+@-webkit-keyframes type{
+    from { width: 0; }
+}

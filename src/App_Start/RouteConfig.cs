@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace Algoteacher.App_Start
+namespace EasyMath.App_Start
 {
     public class RouteConfig
     {
@@ -14,6 +14,12 @@ namespace Algoteacher.App_Start
                 url: "{controller}/{*path}",
                 defaults: new { controller = "Home", action = "Index" }
             );
+
+            // routes.MapRoute(
+            //    name: "Default",
+            //    url: "{controller}/{action}/{id}",
+            //    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            //);
         }
     }
 }

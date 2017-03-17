@@ -1,4 +1,4 @@
-﻿namespace Algoteacher.Models
+﻿namespace EasyMath.Models
 {
     public class Schema
     {
