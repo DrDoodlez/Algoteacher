@@ -4,16 +4,24 @@ text {
     font-size: 22px;
 }
 
-div {
+/*div {
     font-size: 22px;
     padding-bottom: 5px;
+}*/
+
+.lettering-item {
+    width: 20px;
+    margin: 5px;
+    float: left;
+    text-align: center;
+    cursor: pointer;
 }
 
 #expression {
     margin-left: 30%;
-    margin-right: 30%;
-    margin-top: 40px;
+    margin-bottom: 60px;
     font-size: 24px;
+    height: 50px;
 }
 
 .matrix-container {

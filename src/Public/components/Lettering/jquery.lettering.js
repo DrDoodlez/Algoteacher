@@ -17,7 +17,7 @@
 		, inject = '';
 		if (a.length) {
 			$(a).each(function(i, item) {
-				inject += '<div id="'+klass+(i+1)+'" aria-hidden="true">'+item+'</div>'+after;
+				inject += '<div class="lettering-item" id="'+klass+(i+1)+'" aria-hidden="true">'+item+'</div>'+after;
 			});
 			t.attr('aria-label',text)
 			.empty()
