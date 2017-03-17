@@ -2,6 +2,7 @@ define([
     "Backbone",
     "./ViewManager",
     "./../apps/home/app",
+    "./../apps/easymath/app",
     "./../apps/teach/app",
     "./../apps/tasks/app",
     "./../apps/login/app",
@@ -10,6 +11,7 @@ define([
     Backbone,
     ViewManager,
     HomeApp,
+    EasymathApp,
     TeachApp,
     TaskApp,
     LoginApp,
@@ -22,6 +24,7 @@ define([
 
         routes: {
             "": "home",
+            "easymath": "easymath",
             "info": "info",
             "account/login": "login",
             "account/register": "register",
@@ -31,6 +34,10 @@ define([
 
         home: function() {
             HomeApp.run(this.viewManager);
+        },
+
+        easymath: function() {
+            EasymathApp.run(this.viewManager);
         },
 
         login: function() {
