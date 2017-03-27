@@ -7,6 +7,7 @@ namespace EasyMath.Controllers
         public ActionResult Index()
         {
             System.Diagnostics.Debug.WriteLine("HOME controller");
+            Response.TrySkipIisCustomErrors = true;
             return View("Index");
         }
     }

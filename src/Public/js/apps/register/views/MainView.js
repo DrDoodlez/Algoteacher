@@ -34,6 +34,7 @@ define([
 
         register: function(data) {
             var self = this;
+            var err = self.$el.find("#form-error");
             var data = {
                 Email: data.email,
                 Password: data.password,
@@ -45,9 +46,14 @@ define([
                 contentType: "application/json; charset=utf-8",
                 data: JSON.stringify(data)
             }).done(function(d) {
-                //self.result("Done!");
+                err.hide();
                 console.log("Registered!" + d);
-            }).fail(()=>{console.error("Register Error");});
+                document.location.href = document.origin +  "/account/login";
+            }).fail(error=>{
+                console.error("Register Error");
+                err.show();
+                err.text(error.responseText);
+            });
         }
     });
 

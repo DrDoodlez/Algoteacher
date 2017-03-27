@@ -36,6 +36,7 @@ define([
 
         login: function(data) {
             var self = this;
+            var err = self.$el.find("#form-error");
 
             var loginData = {
                 grant_type: "password",
@@ -49,16 +50,22 @@ define([
             }).done(function(data) {
                 //self.user(data.userName);
                 console.log(data.userName + ", Привет!");
-                self.$el.find("#userName").text(data.userName);
+                self.$el.find("#user-name-label").text(data.userName);
                 // Cache the access token in session storage.
                 sessionStorage.setItem("accessToken", data.access_token);
-            }).fail(()=>{console.error("Register Error");});
+                err.hide();
+            }).fail(error=>{
+                console.error("Login Error");
+                err.show();
+                err.text(error.responseText);
+            });
         },
 
         logout: function() {
             // Log out from the cookie based logon.
             var self = this;
             var token = sessionStorage.getItem("accessToken");
+            var err = self.$el.find("#form-error");
             var headers = {};
             if (token) {
                 headers.Authorization = "Bearer " + token;
@@ -70,10 +77,15 @@ define([
             }).done(function(data) {
                 // Successfully logged out. Delete the token.
                 //self.user('');
-                self.$el.find("#userName").text("Авторизируйся");
+                self.$el.find("#user-name-label").text("Авторизируйся");
                 console.log("Logout!!");
                 sessionStorage.removeItem("accessToken");
-            }).fail(()=>{console.error("Register Error");});
+                err.hide();
+            }).fail(error=>{
+                console.error("Logout Error");
+                err.show();
+                err.text(error.responseText);
+            });
         }
     });
 

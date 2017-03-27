@@ -11,9 +11,11 @@ namespace EasyMath.App_Start
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{*path}",
+                url: "{*url}",
                 defaults: new { controller = "Home", action = "Index" }
             );
+
+            //routes.MapRoute("NotFound", "{*url}", new { controller = "Home", action = "Index" });
 
             // routes.MapRoute(
             //    name: "Default",

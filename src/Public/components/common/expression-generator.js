@@ -8,9 +8,10 @@ define(
         _,
         $
     ) {
-        var defaultOperations = ["+", "-", "*", "/", "^"];
+        // отладить работу с ^ и 0
+        var defaultOperations = ["+", "-", "*", "/"];
         var defaultMaxNumber = 10;
-        var defaultMinNumber = 0;
+        var defaultMinNumber = 1;
         var openBrakets = 0;
         var brakets = [0, 1];
 
