@@ -4,6 +4,7 @@ define([
     "jQuery",
     "ExpressionGenerator",
     "rpnBuilder",
+    "rpn",
     "mathIt",
     "knockout",
     "./HeaderView",
@@ -14,6 +15,7 @@ define([
     $,
     expressionGenerator,
     rpnBuilder,
+    rpn,
     mathIt,
     ko,
     HeaderView,
@@ -41,24 +43,32 @@ define([
                 var $expression = self.$el.find("#expression");
                 $expression.text(_.join(expression, " "));
                 var inputValue = $expression.text();
-                inputValue = inputValue.replace(/ /g, "");
+                inputValue = inputValue.replace(/ /g, " ");
                 var inputArr = _.toArray(inputValue);
 
                 self.createExpressionInDOM($expression);
 
                 mathResultString = inputValue;
-                var RPN = new rpnBuilder(inputValue);
-                var RPNObjectCollection = RPN.getTokensWithIds();
-                self.createGraphFromRPN(RPNObjectCollection);
+
+                //var RPN = new rpnBuilder(inputValue);
+
+                // Вариант с дефолтной функцией, только выражение без id
+                //var rpnString = rpn.infix2rpn(inputValue);
+
+                var rpnResult =  rpn.exp2rpnWithIds(inputValue);
+                var rpnString = rpnResult.string;
+
+                //var RPNObjectCollection = RPN.getTokensWithIds();
+                var rpnObjectCollection =  rpnResult.map;
+
+
+                self.createGraphFromRPN(rpnObjectCollection);
                 //createGraphFromRPN(RPNObjectCollection);
                 var resDiv = self.$el.find("#res");
-                // var rpn = [];
-                // _.each(RPNObjectCollection, el => {
-                //     rpn.push(el.token);
-                // });
-                var resString = RPN.getString();
-                resDiv.text(resString);
-                console.log(resString);
+
+                //var resString = RPN.getString();
+                resDiv.text(rpnString);
+                console.log(rpnString);
                 self.$el.find("#math").text(mathResultString);
                 //initGraph();
             });

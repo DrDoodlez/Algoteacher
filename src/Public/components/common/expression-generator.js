@@ -10,7 +10,7 @@ define(
     ) {
         // отладить работу с ^ и 0
         var defaultOperations = ["+", "-", "*", "/"];
-        var defaultMaxNumber = 10;
+        var defaultMaxNumber = 9;
         var defaultMinNumber = 1;
         var openBrakets = 0;
         var brakets = [0, 1];

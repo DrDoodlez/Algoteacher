@@ -83,7 +83,9 @@ require.config({
             deps: ["jQuery"],
             exports: "rpnBuilder"
         },
-
+        "rpn": {
+            exports: "rpn"
+        },
         "mathjax": {
             exports: "MathJax",
             init: function() {
@@ -127,7 +129,8 @@ require.config({
         StepMatrixControl : "./../components/StepControl/StepMatrixControl",
         ExpressionGenerator: "./../components/common/expression-generator",
         mathIt: "./../components/common/mathIt",
-        rpnBuilder: "./../components/common/rpnBuilder"
+        rpnBuilder: "./../components/common/rpnBuilder",
+        rpn: "./../components/common/rpn"
     }
 });
 
