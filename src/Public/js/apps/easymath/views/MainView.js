@@ -33,7 +33,6 @@ define([
             // var footerView = new FooterView();
             // this.subviews.push(footerView);
             // this.$el.append(footerView.render().el);
-            this.nodes = [];
             //var oldMath = "";
             var mathResultString = "";
             var self = this;
@@ -44,7 +43,7 @@ define([
                 $expression.text(_.join(expression, " "));
                 var inputValue = $expression.text();
                 inputValue = inputValue.replace(/ /g, " ");
-                var inputArr = _.toArray(inputValue);
+                //var inputArr = _.toArray(inputValue);
 
                 self.createExpressionInDOM($expression);
 
@@ -61,7 +60,7 @@ define([
                 //var RPNObjectCollection = RPN.getTokensWithIds();
                 var rpnObjectCollection =  rpnResult.map;
 
-
+                self.nodes = [];
                 self.createGraphFromRPN(rpnObjectCollection);
                 //createGraphFromRPN(RPNObjectCollection);
                 var resDiv = self.$el.find("#res");
