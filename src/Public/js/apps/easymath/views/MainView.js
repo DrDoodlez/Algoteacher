@@ -37,6 +37,8 @@ define([
         classes: "drop-theme-arrows"
     };
 
+    var operations = ["+", "-", "*"];
+
     var MainView = Backbone.View.extend({
         initialize: function() {
             this.subviews = [];
@@ -46,6 +48,7 @@ define([
             var headerView = new HeaderView();
             this.subviews.push(headerView);
             this.$el.append(headerView.render().el);
+            this.changeNode.bind(this);
             // var footerView = new FooterView();
             // this.subviews.push(footerView);
             // this.$el.append(footerView.render().el);
@@ -54,37 +57,14 @@ define([
             var self = this;
             this.$el.find("#in").on("click", function() {
                 // TODO: need validation for input value
-                var expression = expressionGenerator.generate(4);
+                self.expression = expressionGenerator.generate(4);
                 var $expression = self.$el.find("#expression");
-                $expression.text(_.join(expression, " "));
+                $expression.text(_.join(self.expression, " "));
                 var inputValue = $expression.text();
                 inputValue = inputValue.replace(/ /g, " ");
                 //var inputArr = _.toArray(inputValue);
 
                 self.createExpressionInDOM($expression);
-
-                mathResultString = inputValue;
-
-                //var RPN = new rpnBuilder(inputValue);
-
-                // Вариант с дефолтной функцией, только выражение без id
-                //var rpnString = rpn.infix2rpn(inputValue);
-
-                var rpnResult =  rpn.exp2rpnWithIds(inputValue);
-                var rpnString = rpnResult.string;
-
-                //var RPNObjectCollection = RPN.getTokensWithIds();
-                var rpnObjectCollection =  rpnResult.map;
-
-                self.nodes = new Map();
-                self.createGraphFromRPN(rpnObjectCollection);
-                //createGraphFromRPN(RPNObjectCollection);
-                var resDiv = self.$el.find("#res");
-
-                //var resString = RPN.getString();
-                resDiv.text(rpnString);
-                console.log(rpnString);
-                self.$el.find("#math").text(mathResultString);
 
                 self.$el.find(".lettering-item").on("click", event => {
                     //event.preventDefault();
@@ -120,6 +100,7 @@ define([
                             //TODO: ПРОВЕРИТЬ КАК РАБОТАЕТ ДЛЯ ПРИМЕРОВ
                             self.changeNode(node, curValue);
                             self.activePopup.close();
+                            self.activePopup.drop.remove();
                             self.activePopup = null;
                         } else {
                             attentionText.show();
@@ -127,6 +108,29 @@ define([
                         }
                     });
                 });
+
+                mathResultString = inputValue;
+
+                //var RPN = new rpnBuilder(inputValue);
+
+                // Вариант с дефолтной функцией, только выражение без id
+                //var rpnString = rpn.infix2rpn(inputValue);
+
+                var rpnResult =  rpn.exp2rpnWithIds(inputValue);
+                var rpnString = rpnResult.string;
+
+                //var RPNObjectCollection = RPN.getTokensWithIds();
+                var rpnObjectCollection =  rpnResult.map;
+
+                self.nodes = new Map();
+                self.createGraphFromRPN(rpnObjectCollection);
+                //createGraphFromRPN(RPNObjectCollection);
+                var resDiv = self.$el.find("#res");
+
+                //var resString = RPN.getString();
+                resDiv.text(rpnString);
+                console.log(rpnString);
+                self.$el.find("#math").text(mathResultString);
                 //initGraph();
             });
 
@@ -139,14 +143,16 @@ define([
 
         createExpressionInDOM: function($expression) {
             $expression.lettering("words");
+
             //TODO: добавить обработчики... !!!!
             // обращение через #word + i;
             // + можно повесить на + - и тд обработку по  наведению\нажатию.
             // можно пройти по всем элементам в $expression добавлять обработчик в зависимости от элемента
+
+
         },
 
         createGraphFromRPN: function(rpnWithIds) {
-            var operations = ["+", "-", "*"];
             var self = this;
             // var rpn = [];
             // _.each(rpnWithIds, e => {
@@ -199,23 +205,31 @@ define([
             return false;
         },
 
-        changeNode: function(node, expressionArray, label) {
+        changeNode: function(node, label) {
             node.label = label;
-            var newMath = expressionArray;
+            var newMath = this.expression;
             console.log(newMath);
             newMath[node.origId] = label;
             console.log(node.origId);
 
-            var nodeRoot = $("#word" + node.id);
+            var nodeRoot = $("#word" + node.origId);
             nodeRoot.text(node.label);
 
             // удаление элементов из узла (грф вид)
-            var child1ID = node.childs[0].id;
-            var child2ID = node.childs[1].id;
+            var child1ID = node.childs[0].origId;
+            var child2ID = node.childs[1].origId;
             console.log(node.childs[0].origId);
             console.log(node.childs[1].origId);
-            newMath[node.childs[0].origId] = " ";
-            newMath[node.childs[1].origId] = " ";
+            newMath[child1ID] = "";
+            newMath[child2ID] = "";
+            if (newMath[child1ID - 1] == "(" && newMath[child2ID + 1] == ")") {
+                newMath[child1ID - 1] = "";
+                newMath[child2ID + 1] = "";
+                this._removeWordById(child1ID - 1);
+                this._removeWordById(child2ID + 1);
+            }
+            // newMath.splice(child1ID, 1);
+            // newMath.splice(child2ID, 1);
 
             // TODO: НАписать удаление слов из дома (ПРОВЕРИТЬ!!!)
             this._removeWordById(child1ID);
