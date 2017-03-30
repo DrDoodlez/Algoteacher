@@ -9,6 +9,15 @@ text {
     padding-bottom: 5px;
 }*/
 
+.debug-info-block {
+    border: 2px solid black;
+    width: 200px;
+    /* align-items: center; */
+    padding: 10px;
+    overflow: hidden;
+    margin-top: 400px;
+}
+
 .lettering-item {
     width: 20px;
     margin: 5px;
