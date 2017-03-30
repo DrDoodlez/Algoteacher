@@ -17,13 +17,13 @@ require.config({
         "lodash": {
             exports: "lodash"
         },
-
-        "drop": {
-            exports: "Drop"
+        "tether": {
+            exports: "tether"
         },
 
-        "tether": {
-            exports: "Tether"
+        "drop": {
+            deps: ["tether"],
+            exports: "drop"
         },
 
         "lettering": {

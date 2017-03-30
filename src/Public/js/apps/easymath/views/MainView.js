@@ -2,6 +2,7 @@ define([
     "Backbone",
     "lodash",
     "jQuery",
+    "drop",
     "ExpressionGenerator",
     "rpnBuilder",
     "rpn",
@@ -13,6 +14,7 @@ define([
     Backbone,
     _,
     $,
+    drop,
     expressionGenerator,
     rpnBuilder,
     rpn,
@@ -21,6 +23,20 @@ define([
     HeaderView,
     FooterView
 ) {
+    var popupContent = {
+        insertValue: "<div><div class='question-input_attention' hidden = true> Неправильно! </div>" +
+                        "<div class='question-input_text'> Введи результат операции </div>" +
+                        "<input type = 'text' class = 'question-input' id = 'question-input_input' /></div>",
+        wrongNode: "Данную операцию нельзя выполнить в данный момент, выбери другую!",
+        leaf: "Это операнд, выбери операцию"
+    };
+
+    var DEFAULT_OPTIONS = {
+        position: "bottom center",
+        remove: true,
+        classes: "drop-theme-arrows"
+    };
+
     var MainView = Backbone.View.extend({
         initialize: function() {
             this.subviews = [];
@@ -60,7 +76,7 @@ define([
                 //var RPNObjectCollection = RPN.getTokensWithIds();
                 var rpnObjectCollection =  rpnResult.map;
 
-                self.nodes = [];
+                self.nodes = new Map();
                 self.createGraphFromRPN(rpnObjectCollection);
                 //createGraphFromRPN(RPNObjectCollection);
                 var resDiv = self.$el.find("#res");
@@ -69,8 +85,55 @@ define([
                 resDiv.text(rpnString);
                 console.log(rpnString);
                 self.$el.find("#math").text(mathResultString);
+
+                self.$el.find(".lettering-item").on("click", event => {
+                    //event.preventDefault();
+                    if (self.activePopup) {
+                        $(".drop").remove();
+                        self.activePopup.close();
+                        self.activePopup = null;
+                        return;
+                    }
+                    // id - номер В обратной польской нотации
+                    var id = event.target.dataset.id;
+
+                    var content;
+                    var node = self.nodes.get(+id);
+                    if (!node) {
+                        content = popupContent.wrongNode;
+                    } else if (self.isCalculatable(node)) {
+                        //TODO: Можно добавить оброботчики правильно и не правильно ответа.
+                        content = popupContent.insertValue;
+                    } else if (node.leaf) {
+                        content = popupContent.leaf;
+                    } else {
+                        content = popupContent.wrongNode;
+                    };
+                    self.activePopup = self._createPopup(content, event.target);
+                    self.activePopup.open();
+                    var input = $(self.activePopup.drop).find("input");
+                    var attentionText = $(self.activePopup.drop).find(".question-input_attention");
+                    input.on("change", e => {
+                        var curValue = e.currentTarget.value;
+                        //TODO: Можно использовать метод из rpn Calculate
+                        if (curValue == self.calculateNode(node)) {
+                            //TODO: ПРОВЕРИТЬ КАК РАБОТАЕТ ДЛЯ ПРИМЕРОВ
+                            self.changeNode(node, curValue);
+                            self.activePopup.close();
+                            self.activePopup = null;
+                        } else {
+                            attentionText.show();
+                            input.val("");
+                        }
+                    });
+                });
                 //initGraph();
             });
+
+
+            ///  TODO: обработка клика!!!
+
+
             return this;
         },
 
@@ -83,7 +146,7 @@ define([
         },
 
         createGraphFromRPN: function(rpnWithIds) {
-            var operations = ["+", "-", "*", "/", "^"];
+            var operations = ["+", "-", "*"];
             var self = this;
             // var rpn = [];
             // _.each(rpnWithIds, e => {
@@ -95,28 +158,29 @@ define([
                 var node = { id: lastId, origId: t.id ,label: t.token,
                     childs: [], leaf: !operations.find(op => op == t.token) };
                 lastId++;
-                self.nodes.push(node);
+                self.nodes.set(t.id, node);
             });
 
             var stack = [];
             var curHead;
-            _.each(self.nodes, node => {
+            //_.each(self.nodes.values(), node => {
+            self.nodes.forEach((node, id) => {
                 curHead = _.last(stack);
-                console.log(stack);
+                //console.log(stack);
                 if (curHead) {
-                    console.log("curHead: " + curHead.label);
+                    //console.log("curHead: " + curHead.label);
                     curHead.childs.unshift(node);
-                    console.log("push childs: " + node.label);
+                    //console.log("push childs: " + node.label);
                     if (curHead.childs.length == 2) {
                         var t = stack.pop();
-                        console.log(stack);
-                        console.log("pop: " + t.label);
+                        //console.log(stack);
+                        //console.log("pop: " + t.label);
                     }
                 }
                 if (!node.leaf) {
                     stack.push(node);
-                    console.log(stack);
-                    console.log("push: " + node.label);
+                    //console.log(stack);
+                    //console.log("push: " + node.label);
                 }
             });
         },
@@ -181,9 +245,28 @@ define([
 
         _removeWordById: function(id) {
             $("#word" + id).remove();
-        }
+        },
 
         //TODO: добавить popup + обработчики нажатия и ввода ответа с использованием этих методов
+
+        ////////////////////////////////////////  POPUP ------------ START ////////////////////////////////////////////////////
+
+        _createPopup: function(content, target, options) {
+            if (content && target) {
+                options = options || {};
+                options.content = content;
+                options.target = target;
+                options = _.extend(_.clone(DEFAULT_OPTIONS), options);
+
+                // Create Tether element
+                var popover = new drop(options);
+                return popover;
+            } else {
+                console.warn("Tried to open popover with insufficient parameters.");
+            }
+        }
+
+      ///////////////////////////////////////  POPUP ------------ END ////////////////////////////////////////////////////
 
     });
 

@@ -9,7 +9,7 @@ define(
         $
     ) {
         // отладить работу с ^ и 0
-        var defaultOperations = ["+", "-", "*", "/"];
+        var defaultOperations = ["+", "-", "*"];
         var defaultMaxNumber = 9;
         var defaultMinNumber = 1;
         var openBrakets = 0;
@@ -51,6 +51,9 @@ define(
                 if (braket == ")") {
                     expression.push(braket);
                 }
+            }
+            if (expression[0] == "") {
+                expression.shift();
             }
             return expression;
         }
