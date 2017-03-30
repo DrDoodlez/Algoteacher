@@ -50,7 +50,7 @@ define([
             }).done(function(data) {
                 //self.user(data.userName);
                 console.log(data.userName + ", Привет!");
-                self.$el.find("#user-name-label").text(data.userName);
+                $("#user-name-label").text(data.userName);
                 // Cache the access token in session storage.
                 sessionStorage.setItem("accessToken", data.access_token);
                 err.hide();
@@ -77,7 +77,7 @@ define([
             }).done(function(data) {
                 // Successfully logged out. Delete the token.
                 //self.user('');
-                self.$el.find("#user-name-label").text("Авторизируйся");
+                $("#user-name-label").text("Авторизируйся");
                 console.log("Logout!!");
                 sessionStorage.removeItem("accessToken");
                 err.hide();

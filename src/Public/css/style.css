@@ -17,6 +17,10 @@ text {
     cursor: pointer;
 }
 
+#user-name-label {
+    cursor: pointer;
+}
+
 #expression {
     margin-left: 30%;
     margin-bottom: 60px;
