@@ -58,6 +58,7 @@ define([
             this.$el.find("#in").on("click", function() {
                 // TODO: need validation for input value
                 self.expression = expressionGenerator.generate(4);
+                $(".result-expression").empty();
                 var $expression = self.$el.find("#expression");
                 $expression.text(_.join(self.expression, " "));
                 var inputValue = $expression.text();
@@ -69,8 +70,9 @@ define([
                 self.$el.find(".lettering-item").on("click", event => {
                     //event.preventDefault();
                     if (self.activePopup) {
-                        $(".drop").remove();
+                        //$(".drop").remove();
                         self.activePopup.close();
+                        self.activePopup.remove();
                         self.activePopup = null;
                         return;
                     }
@@ -100,7 +102,7 @@ define([
                             //TODO: ПРОВЕРИТЬ КАК РАБОТАЕТ ДЛЯ ПРИМЕРОВ
                             self.changeNode(node, curValue);
                             self.activePopup.close();
-                            self.activePopup.drop.remove();
+                            self.activePopup.remove();
                             self.activePopup = null;
                         } else {
                             attentionText.show();
@@ -208,6 +210,13 @@ define([
         changeNode: function(node, label) {
             node.label = label;
             var newMath = this.expression;
+            var lastMath = this.expression;
+            const text2 = _.join(lastMath, " ") + " => ";
+            var resultExpression = $(".result-expression")[0];
+            // if (resultExpression.children.length == 0) {
+            //     const text = _.join(newMath, " ");
+            //     resultExpression.append($("<div>" + text + "</div>"));
+            // }
             console.log(newMath);
             newMath[node.origId] = label;
             console.log(node.origId);
@@ -254,6 +263,7 @@ define([
             console.log(newMath);
             var $math = $("#math");
             var newText = $math.text() + " => " + _.join(newMath, " ");
+            $(resultExpression).append($("<div>" + text2 + "</div>"));
             $math.text(newText);
         },
 
