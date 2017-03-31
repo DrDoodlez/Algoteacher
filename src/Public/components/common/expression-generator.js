@@ -72,6 +72,21 @@ define(
             return Math.random() * (max - min) + min;
         }
 
+        // TODO: проверить как будет работать
+        function getRandom2Number(min, max) {
+            return getRandomNumber(min, max).toString(2);
+        }
+
+        // TODO: проверить как будет работать
+        function getRandom8Number(min, max) {
+            return getRandomNumber(min, max).toString(8);
+        }
+
+        // TODO: проверить как будет работать
+        function getRandom16Number(min, max) {
+            return getRandomNumber(min, max).toString(16);
+        }
+
         function getOpenBraket() {
             var res = getBraket("(");
             if (!!res) {
