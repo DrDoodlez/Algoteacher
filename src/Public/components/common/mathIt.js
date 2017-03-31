@@ -2,7 +2,7 @@ define(
     "mathIt",
     [
         "lodash",
-        "jquery",
+        "jQuery",
     ],
     function(
         _,

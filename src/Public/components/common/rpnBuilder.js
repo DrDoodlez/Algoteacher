@@ -2,7 +2,7 @@ define(
     "rpnBuilder",
     [
         "lodash",
-        "jquery",
+        "jQuery",
     ],
     function(
         _,

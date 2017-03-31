@@ -1,6 +1,6 @@
 define([
     "Backbone",
-    "jquery",
+    "jQuery",
     "Underscore",
     "MatrixBuilder",
     "Animation",

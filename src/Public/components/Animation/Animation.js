@@ -17,7 +17,7 @@ define(
     "Animation",
     [
         "underscore",
-        "jquery",
+        "jQuery",
     ],
     function(
         _,

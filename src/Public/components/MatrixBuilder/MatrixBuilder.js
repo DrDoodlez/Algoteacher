@@ -2,7 +2,7 @@ define(
     "MatrixBuilder",
     [
         "underscore",
-        "jquery",
+        "jQuery",
     ],
     function(
         _,

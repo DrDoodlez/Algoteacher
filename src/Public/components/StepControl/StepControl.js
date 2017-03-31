@@ -2,7 +2,7 @@ define(
     "StepControl",
     [
         "underscore",
-        "jquery",
+        "jQuery",
     ],
     function(
         _,

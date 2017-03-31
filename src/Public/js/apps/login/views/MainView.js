@@ -54,6 +54,7 @@ define([
                 // Cache the access token in session storage.
                 sessionStorage.setItem("accessToken", data.access_token);
                 err.hide();
+                document.location.href = document.origin +  "/";
             }).fail(error=>{
                 console.error("Login Error");
                 err.show();
@@ -81,6 +82,7 @@ define([
                 console.log("Logout!!");
                 sessionStorage.removeItem("accessToken");
                 err.hide();
+                document.location.href = document.origin +  "/account/login";
             }).fail(error=>{
                 console.error("Logout Error");
                 err.show();

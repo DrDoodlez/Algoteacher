@@ -2,7 +2,7 @@ define(
     "StepMatrixControl",
     [
         "underscore",
-        "jquery",
+        "jQuery",
     ],
     function(
         _,

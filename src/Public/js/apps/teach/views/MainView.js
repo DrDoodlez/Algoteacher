@@ -1,6 +1,6 @@
 define([
     "Backbone",
-    "jquery",
+    "jQuery",
     "./subviews/TeachView",
     "./subviews/TeachView2",
     "./subviews/EmptyView"
