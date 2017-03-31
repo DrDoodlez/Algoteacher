@@ -9,11 +9,12 @@ define(
         $
     ) {
         // отладить работу с ^ и 0
-        var defaultOperations = ["+", "-", "*"];
+        var defaultOperations = ["+", "-", "*", "/"];
         var defaultMaxNumber = 9;
         var defaultMinNumber = 1;
         var openBrakets = 0;
-        var brakets = [0, 1];
+        // Можно задать частоту
+        var brakets = [0, 0, 1];
 
         function generateExpression(numberOfOperations, max, min, operations) {
             var expression = [];

@@ -37,7 +37,7 @@ define([
         classes: "drop-theme-arrows"
     };
 
-    var operations = ["+", "-", "*"];
+    var operations = ["+", "-", "*", "/"];
 
     var MainView = Backbone.View.extend({
         initialize: function() {
@@ -98,7 +98,7 @@ define([
                     input.on("change", e => {
                         var curValue = e.currentTarget.value;
                         //TODO: Можно использовать метод из rpn Calculate
-                        if (curValue == self.calculateNode(node)) {
+                        if (self._campare(curValue, self.calculateNode(node))) {
                             //TODO: ПРОВЕРИТЬ КАК РАБОТАЕТ ДЛЯ ПРИМЕРОВ
                             self.changeNode(node, curValue);
                             self.activePopup.close();
@@ -141,6 +141,15 @@ define([
 
 
             return this;
+        },
+
+        //FOR INT and Float value
+        _campare: function(a, b) {
+            const EPS = 0.1;
+            if (Math.abs(Math.abs(a) - Math.abs(b)) < EPS) {
+                return true;
+            }
+            return false;
         },
 
         createExpressionInDOM: function($expression) {
