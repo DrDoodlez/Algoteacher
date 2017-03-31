@@ -1,5 +1,5 @@
-# Algoteacher project ----- Backbone.js + ASP.NET MVC SPA  
+# Algoteacher project ----- Backbone.js + ASP.NET WEBAPI SPA  
 
-Online learning system for study some algorithmic issues. 
+Online learning system. 
 
 [TDB]
