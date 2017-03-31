@@ -68,6 +68,10 @@ define(
             return min + Math.floor(Math.random() * (max + 1 - min));
         }
 
+        function getRandomFloatNumber(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
         function getOpenBraket() {
             var res = getBraket("(");
             if (!!res) {
