@@ -87,6 +87,17 @@ define(
             return getRandomNumber(min, max).toString(16);
         }
 
+        function getRandomDividedNumber(min, max){
+            var a  = getRandomNumber(min, max);
+            var b = 0;
+            while (b = 0) {
+                b  = getRandomNumber(min, max);
+            }
+            let tex = "\frac{" + a + "}{" + b + "}";
+            return { a: a, b: b, string: a + "/" + b , tex: tex };
+        }
+
+
         function getOpenBraket() {
             var res = getBraket("(");
             if (!!res) {
