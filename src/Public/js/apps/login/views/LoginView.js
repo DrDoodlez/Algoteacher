@@ -3,7 +3,7 @@ define([
     "Underscore",
     "jQuery",
     "knockout",
-    "text!./../templates/LoginView.html"
+    "text!./../templates/LoginTemplate.html"
 ], function(
     Backbone,
     _,

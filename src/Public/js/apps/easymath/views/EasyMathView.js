@@ -8,8 +8,7 @@ define([
     "rpn",
     "mathIt",
     "knockout",
-    "./HeaderView",
-    "./FooterView"
+    "text!./../templates/mathTemplate.html"
 ], function(
     Backbone,
     _,
@@ -20,8 +19,7 @@ define([
     rpn,
     mathIt,
     ko,
-    HeaderView,
-    FooterView
+    MathTemplate
 ) {
     var popupContent = {
         insertValue: "<div><div class='question-input_attention' hidden = true> Неправильно! </div>" +
@@ -43,11 +41,10 @@ define([
         initialize: function() {
             this.subviews = [];
         },
+        template: _.template(MathTemplate),
 
         render: function() {
-            var headerView = new HeaderView();
-            this.subviews.push(headerView);
-            this.$el.append(headerView.render().el);
+            this.$el.html(this.template());
             this.changeNode.bind(this);
             // var footerView = new FooterView();
             // this.subviews.push(footerView);

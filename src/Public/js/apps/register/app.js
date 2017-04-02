@@ -1,9 +1,9 @@
 define(function(require) {
-    var MainView = require("./views/MainView");
+    var RegisterView = require("./views/RegisterView");
 
     return {
         run: function(viewManager) {
-            var view = new MainView();
+            var view = new RegisterView();
             viewManager.show(view);
         }
     };

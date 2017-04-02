@@ -5,9 +5,7 @@ define([
     "ExpressionGenerator",
     "rpnBuilder",
     "mathIt",
-    "knockout",
-    "./HeaderView",
-    "./FooterView"
+    "text!./../templates/HomeTemplate.html"
 ], function(
     Backbone,
     _,
@@ -15,19 +13,16 @@ define([
     expressionGenerator,
     rpnBuilder,
     mathIt,
-    ko,
-    HeaderView,
-    FooterView
+    HomeTemplate
 ) {
     var MainView = Backbone.View.extend({
         initialize: function() {
             this.subviews = [];
         },
+        template: _.template(HomeTemplate),
 
         render: function() {
-            var headerView = new HeaderView();
-            this.subviews.push(headerView);
-            this.$el.append(headerView.render().el);
+            this.$el.html(this.template());
             return this;
         }
     });

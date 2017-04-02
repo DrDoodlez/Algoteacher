@@ -1,9 +1,9 @@
 define(function(require) {
-    var MainView = require("./views/MainView");
+    var LoginView = require("./views/LoginView");
 
     return {
         run: function(viewManager) {
-            var view = new MainView();
+            var view = new LoginView();
             viewManager.show(view);
         }
     };
