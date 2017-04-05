@@ -268,7 +268,7 @@ define([
             //}
             console.log(newMath);
             var $math = $("#math");
-            var newText = $math.text() + " => " + _.join(newMath, " ");
+            var newText = $math.text() + " = " + _.join(newMath, " ");
             $(resultExpression).append($("<div>" + text2 + "</div>"));
             $math.text(newText);
         },
