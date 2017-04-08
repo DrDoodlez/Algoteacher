@@ -217,7 +217,7 @@ define([
             node.label = label;
             var newMath = this.expression;
             var lastMath = this.expression;
-            const text2 = _.join(lastMath, " ") + " => ";
+            const text2 = _.join(lastMath, " ") + " = ";
             var resultExpression = $(".result-expression")[0];
             // if (resultExpression.children.length == 0) {
             //     const text = _.join(newMath, " ");
@@ -237,35 +237,35 @@ define([
             console.log(node.childs[1].origId);
             newMath[child1ID] = "";
             newMath[child2ID] = "";
-            if (newMath[child1ID - 1] == "(" && newMath[child2ID + 1] == ")") {
-                newMath[child1ID - 1] = "";
-                newMath[child2ID + 1] = "";
-                this._removeWordById(child1ID - 1);
-                this._removeWordById(child2ID + 1);
+            var left;
+            var right;
+            for (var i = child1ID; i >= 0; i--) {
+                if (newMath[i] != "") {
+                    left = i;
+                    break;
+                }
             }
-            // newMath.splice(child1ID, 1);
-            // newMath.splice(child2ID, 1);
+            for (var i = child2ID; i <= newMath.length; i++) {
+                if (newMath[i] != "") {
+                    right = i;
+                    break;
+                }
+            }
+            if (newMath[left] == "(" && newMath[right] == ")") {
+                newMath[left] = "";
+                newMath[right] = "";
+                this._removeWordById(left);
+                this._removeWordById(right);
+            }
 
-            // TODO: НАписать удаление слов из дома (ПРОВЕРИТЬ!!!)
             this._removeWordById(child1ID);
             this._removeWordById(child2ID);
-            // removeGraphNodeById(child1ID);
-            // removeGraphNodeById(child2ID);
-            // removeGraphEdgesById(node.id, child1ID, child2ID);
 
-            // // удаление из g:
-            // g.nodes().splice(node.childs[0].label, 2);
 
             delete node.childs[0];
             delete node.childs[1];
             node.childs = [];
             node.leaf = true;
-            // Проверить удаление из списка.
-            // resize element:
-            // var w = nodeRoot.find("text").children()[0].getBBox().width;
-            // var el = $(g.node(0).elem)
-            // el.children("rect").width(w + 20);
-            //}
             console.log(newMath);
             var $math = $("#math");
             var newText = $math.text() + " = " + _.join(newMath, " ");
