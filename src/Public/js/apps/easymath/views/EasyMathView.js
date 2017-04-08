@@ -67,49 +67,7 @@ define([
 
             this.createExpressionInDOM($expression);
 
-            this.$el.find(".lettering-item").on("click", event => {
-                //event.preventDefault();
-                if (self.activePopup) {
-                    //$(".drop").remove();
-                    self.activePopup.close();
-                    self.activePopup.remove();
-                    self.activePopup = null;
-                    return;
-                }
-                // id - номер В обратной польской нотации
-                var id = event.target.dataset.id;
-
-                var content;
-                var node = self.nodes.get(+id);
-                if (!node) {
-                    content = popupContent.wrongNode;
-                } else if (self.isCalculatable(node)) {
-                    //TODO: Можно добавить оброботчики правильно и не правильно ответа.
-                    content = popupContent.insertValue;
-                } else if (node.leaf) {
-                    content = popupContent.leaf;
-                } else {
-                    content = popupContent.wrongNode;
-                };
-                self.activePopup = self._createPopup(content, event.target);
-                self.activePopup.open();
-                var input = $(self.activePopup.drop).find("input");
-                var attentionText = $(self.activePopup.drop).find(".question-input_attention");
-                input.on("change", e => {
-                    var curValue = e.currentTarget.value;
-                    //TODO: Можно использовать метод из rpn Calculate
-                    if (self._campare(curValue, self.calculateNode(node))) {
-                        //TODO: ПРОВЕРИТЬ КАК РАБОТАЕТ ДЛЯ ПРИМЕРОВ
-                        self.changeNode(node, curValue);
-                        self.activePopup.close();
-                        self.activePopup.remove();
-                        self.activePopup = null;
-                    } else {
-                        attentionText.show();
-                        input.val("");
-                    }
-                });
-            });
+            this.$el.find(".lettering-item").on("click", this._openPopup.bind(this));
 
             mathResultString = inputValue;
 
@@ -134,6 +92,51 @@ define([
             console.log(rpnString);
             this.$el.find("#math").text(mathResultString);
             //initGraph();
+        },
+
+        // Добавить отдельную логику для генерации контента попапа в случае неправильной операции (нужно объяснять почему)
+        _openPopup: function(event) {
+            if (this.activePopup) {
+                //$(".drop").remove();
+                this.activePopup.close();
+                this.activePopup.remove();
+                this.activePopup = null;
+                return;
+            }
+            // id - номер В обратной польской нотации
+            var id = event.target.dataset.id;
+
+            var content;
+            var node = this.nodes.get(+id);
+            if (!node) {
+                content = popupContent.wrongNode;
+            } else if (this.isCalculatable(node)) {
+                //TODO: Можно добавить оброботчики правильно и не правильно ответа.
+                content = popupContent.insertValue;
+            } else if (node.leaf) {
+                content = popupContent.leaf;
+            } else {
+                content = popupContent.wrongNode;
+            };
+            this.activePopup = this._createPopup(content, event.target);
+            this.activePopup.open();
+            var input = $(this.activePopup.drop).find("input");
+            var attentionText = $(this.activePopup.drop).find(".question-input_attention");
+            var self = this;
+            input.on("change", e => {
+                var curValue = e.currentTarget.value;
+                //TODO: Можно использовать метод из rpn Calculate
+                if (self._campare(curValue, self.calculateNode(node))) {
+                    //TODO: ПРОВЕРИТЬ КАК РАБОТАЕТ ДЛЯ ПРИМЕРОВ
+                    self.changeNode(node, curValue);
+                    self.activePopup.close();
+                    self.activePopup.remove();
+                    self.activePopup = null;
+                } else {
+                    attentionText.show();
+                    input.val("");
+                }
+            });
         },
 
         //FOR INT and Float value
