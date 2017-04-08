@@ -53,6 +53,7 @@ define([
                 $("#user-name-label").text(data.userName);
                 // Cache the access token in session storage.
                 sessionStorage.setItem("accessToken", data.access_token);
+                sessionStorage.setItem("userName", data.userName);
                 err.hide();
                 document.location.href = document.origin +  "/";
             }).fail(error=>{
@@ -81,6 +82,7 @@ define([
                 $("#user-name-label").text("Авторизируйся");
                 console.log("Logout!!");
                 sessionStorage.removeItem("accessToken");
+                sessionStorage.removeItem("userName");
                 err.hide();
                 document.location.href = document.origin +  "/account/login";
             }).fail(error=>{
