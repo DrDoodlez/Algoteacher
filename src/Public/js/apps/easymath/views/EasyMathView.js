@@ -40,6 +40,9 @@ define([
     var MainView = Backbone.View.extend({
         initialize: function() {
             this.subviews = [];
+
+            this.user = { goodAnswer: 0, wrongAnswer: 0 , currentWrongAnswers: 0 };
+            this.questionNumber = 0;
         },
         template: _.template(MathTemplate),
 
@@ -48,6 +51,7 @@ define([
             this.changeNode.bind(this);
 
             this.$el.find("#expression").hide();
+            this._updateDebagStatistic();
             this.$el.find("#in").on("click", this._newExpression.bind(this));
 
             return this;
@@ -55,7 +59,9 @@ define([
 
         _newExpression: function() {
             var mathResultString = "";
-            var self = this;
+            this.questionNumber++;
+            this.user.currentWrongAnswers = 0;
+            this._updateDebagStatistic();
             this.expression = expressionGenerator.generate(4);
             $(".result-expression").empty();
             var $expression = this.$el.find("#expression");
@@ -115,12 +121,18 @@ define([
                 content = popupContent.insertValue;
             } else if (node.leaf) {
                 content = popupContent.leaf;
+                this.user.wrongAnswer++;
+                this.user.currentWrongAnswers++;
             } else {
                 content = popupContent.wrongNode;
+                this.user.wrongAnswer++;
+                this.user.currentWrongAnswers++;
             };
+            this._updateDebagStatistic();
             this.activePopup = this._createPopup(content, event.target);
             this.activePopup.open();
             var input = $(this.activePopup.drop).find("input");
+            // TODO: Расширить текс!!!
             var attentionText = $(this.activePopup.drop).find(".question-input_attention");
             var self = this;
             input.on("change", e => {
@@ -132,11 +144,23 @@ define([
                     self.activePopup.close();
                     self.activePopup.remove();
                     self.activePopup = null;
+                    self.user.goodAnswer++;
+                    self.user.currentWrongAnswers = 0;
                 } else {
+                    self.user.wrongAnswer++;
+                    self.user.currentWrongAnswers++;
                     attentionText.show();
                     input.val("");
                 }
+                self._updateDebagStatistic();
             });
+        },
+
+        _updateDebagStatistic: function() {
+            this.$el.find("#goodAnswer").text(this.user.goodAnswer);
+            this.$el.find("#wrongAnswer").text(this.user.wrongAnswer);
+            this.$el.find("#currentWrongAnswers").text(this.user.currentWrongAnswers);
+            this.$el.find("#questionNumber").text(this.user.questionNumber);
         },
 
         //FOR INT and Float value
