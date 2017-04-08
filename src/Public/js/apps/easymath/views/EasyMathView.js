@@ -46,98 +46,94 @@ define([
         render: function() {
             this.$el.html(this.template());
             this.changeNode.bind(this);
-            // var footerView = new FooterView();
-            // this.subviews.push(footerView);
-            // this.$el.append(footerView.render().el);
-            //var oldMath = "";
+
+            this.$el.find("#expression").hide();
+            this.$el.find("#in").on("click", this._newExpression.bind(this));
+
+            return this;
+        },
+
+        _newExpression: function() {
             var mathResultString = "";
             var self = this;
-            this.$el.find("#in").on("click", function() {
-                // TODO: need validation for input value
-                self.expression = expressionGenerator.generate(4);
-                $(".result-expression").empty();
-                var $expression = self.$el.find("#expression");
-                $expression.text(_.join(self.expression, " "));
-                var inputValue = $expression.text();
-                inputValue = inputValue.replace(/ /g, " ");
-                //var inputArr = _.toArray(inputValue);
+            this.expression = expressionGenerator.generate(4);
+            $(".result-expression").empty();
+            var $expression = this.$el.find("#expression");
+            $expression.show();
+            $expression.text(_.join(this.expression, " "));
+            var inputValue = $expression.text();
+            inputValue = inputValue.replace(/ /g, " ");
+            //var inputArr = _.toArray(inputValue);
 
-                self.createExpressionInDOM($expression);
+            this.createExpressionInDOM($expression);
 
-                self.$el.find(".lettering-item").on("click", event => {
-                    //event.preventDefault();
-                    if (self.activePopup) {
-                        //$(".drop").remove();
+            this.$el.find(".lettering-item").on("click", event => {
+                //event.preventDefault();
+                if (self.activePopup) {
+                    //$(".drop").remove();
+                    self.activePopup.close();
+                    self.activePopup.remove();
+                    self.activePopup = null;
+                    return;
+                }
+                // id - номер В обратной польской нотации
+                var id = event.target.dataset.id;
+
+                var content;
+                var node = self.nodes.get(+id);
+                if (!node) {
+                    content = popupContent.wrongNode;
+                } else if (self.isCalculatable(node)) {
+                    //TODO: Можно добавить оброботчики правильно и не правильно ответа.
+                    content = popupContent.insertValue;
+                } else if (node.leaf) {
+                    content = popupContent.leaf;
+                } else {
+                    content = popupContent.wrongNode;
+                };
+                self.activePopup = self._createPopup(content, event.target);
+                self.activePopup.open();
+                var input = $(self.activePopup.drop).find("input");
+                var attentionText = $(self.activePopup.drop).find(".question-input_attention");
+                input.on("change", e => {
+                    var curValue = e.currentTarget.value;
+                    //TODO: Можно использовать метод из rpn Calculate
+                    if (self._campare(curValue, self.calculateNode(node))) {
+                        //TODO: ПРОВЕРИТЬ КАК РАБОТАЕТ ДЛЯ ПРИМЕРОВ
+                        self.changeNode(node, curValue);
                         self.activePopup.close();
                         self.activePopup.remove();
                         self.activePopup = null;
-                        return;
-                    }
-                    // id - номер В обратной польской нотации
-                    var id = event.target.dataset.id;
-
-                    var content;
-                    var node = self.nodes.get(+id);
-                    if (!node) {
-                        content = popupContent.wrongNode;
-                    } else if (self.isCalculatable(node)) {
-                        //TODO: Можно добавить оброботчики правильно и не правильно ответа.
-                        content = popupContent.insertValue;
-                    } else if (node.leaf) {
-                        content = popupContent.leaf;
                     } else {
-                        content = popupContent.wrongNode;
-                    };
-                    self.activePopup = self._createPopup(content, event.target);
-                    self.activePopup.open();
-                    var input = $(self.activePopup.drop).find("input");
-                    var attentionText = $(self.activePopup.drop).find(".question-input_attention");
-                    input.on("change", e => {
-                        var curValue = e.currentTarget.value;
-                        //TODO: Можно использовать метод из rpn Calculate
-                        if (self._campare(curValue, self.calculateNode(node))) {
-                            //TODO: ПРОВЕРИТЬ КАК РАБОТАЕТ ДЛЯ ПРИМЕРОВ
-                            self.changeNode(node, curValue);
-                            self.activePopup.close();
-                            self.activePopup.remove();
-                            self.activePopup = null;
-                        } else {
-                            attentionText.show();
-                            input.val("");
-                        }
-                    });
+                        attentionText.show();
+                        input.val("");
+                    }
                 });
-
-                mathResultString = inputValue;
-
-                //var RPN = new rpnBuilder(inputValue);
-
-                // Вариант с дефолтной функцией, только выражение без id
-                //var rpnString = rpn.infix2rpn(inputValue);
-
-                var rpnResult =  rpn.exp2rpnWithIds(inputValue);
-                var rpnString = rpnResult.string;
-
-                //var RPNObjectCollection = RPN.getTokensWithIds();
-                var rpnObjectCollection =  rpnResult.map;
-
-                self.nodes = new Map();
-                self.createGraphFromRPN(rpnObjectCollection);
-                //createGraphFromRPN(RPNObjectCollection);
-                var resDiv = self.$el.find("#res");
-
-                //var resString = RPN.getString();
-                resDiv.text(rpnString);
-                console.log(rpnString);
-                self.$el.find("#math").text(mathResultString);
-                //initGraph();
             });
 
+            mathResultString = inputValue;
 
-            ///  TODO: обработка клика!!!
+            //var RPN = new rpnBuilder(inputValue);
 
+            // Вариант с дефолтной функцией, только выражение без id
+            //var rpnString = rpn.infix2rpn(inputValue);
 
-            return this;
+            var rpnResult =  rpn.exp2rpnWithIds(inputValue);
+            var rpnString = rpnResult.string;
+
+            //var RPNObjectCollection = RPN.getTokensWithIds();
+            var rpnObjectCollection =  rpnResult.map;
+
+            this.nodes = new Map();
+            this.createGraphFromRPN(rpnObjectCollection);
+            //createGraphFromRPN(RPNObjectCollection);
+            var resDiv = this.$el.find("#res");
+
+            //var resString = RPN.getString();
+            resDiv.text(rpnString);
+            console.log(rpnString);
+            this.$el.find("#math").text(mathResultString);
+            //initGraph();
         },
 
         //FOR INT and Float value
