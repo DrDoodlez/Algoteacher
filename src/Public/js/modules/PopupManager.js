@@ -24,13 +24,12 @@ define([
         openPopup(target, content) {
             if (this.activePopup) {
                 //$(".drop").remove();
-                this.activePopup.close();
-                this.activePopup.remove();
-                this.activePopup = null;
+                this.closePopup();
                 return;
             }
             this.activePopup = this._createPopup(content, target);
             this.activePopup.open();
+            return;
         }
 
         _createPopup(content, target, options) {
@@ -52,12 +51,17 @@ define([
             this.activePopup.close();
             this.activePopup.remove();
             this.activePopup = null;
+            $(document).find(".drop").remove();
         }
 
         getElement() {
             if (this.activePopup) {
                 return $(this.activePopup.drop);
             }
+        }
+
+        isOpen() {
+            return !!this.activePopup;
         }
 
         // getPopupInput() {

@@ -97,6 +97,12 @@ define([
 
         // Добавить отдельную логику для генерации контента попапа в случае неправильной операции (нужно объяснять почему)
         _openPopup: function(event) {
+            event.stopPropagation();
+            if (this.popupManager.isOpen()) {
+                this.popupManager.closePopup();
+                return;
+            };
+
             var id = event.target.dataset.id;
             var node = this.nodes.get(+id);
 
