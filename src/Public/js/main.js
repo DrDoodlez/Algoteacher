@@ -86,6 +86,12 @@ require.config({
         "rpn": {
             exports: "rpn"
         },
+        "Statistic": {
+            exports: "Statistic"
+        },
+        "PopupManager": {
+            exports: "PopupManager"
+        },
         "mathjax": {
             exports: "MathJax",
             init: function() {
@@ -127,10 +133,12 @@ require.config({
         Animation : "./../components/Animation/Animation",
         StepControl : "./../components/StepControl/StepControl",
         StepMatrixControl : "./../components/StepControl/StepMatrixControl",
-        ExpressionGenerator: "./../components/common/expression-generator",
-        mathIt: "./../components/common/mathIt",
-        rpnBuilder: "./../components/common/rpnBuilder",
-        rpn: "./../components/common/rpn"
+        ExpressionGenerator: "./modules/expression-generator",
+        mathIt: "./modules/mathIt",
+        rpnBuilder: "./modules/rpnBuilder",
+        rpn: "./modules/rpn",
+        Statistic: "./modules/Statistic",
+        PopupManager: "./modules/PopupManager"
     }
 });
 

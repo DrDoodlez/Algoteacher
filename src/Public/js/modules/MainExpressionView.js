@@ -2,23 +2,21 @@ define([
     "Backbone",
     "lodash",
     "jQuery",
+    "drop",
     "ExpressionGenerator",
     "rpnBuilder",
     "rpn",
-    "mathIt",
-    "Statistic",
-    "PopupManager",
-    "text!./../templates/mathTemplate.html"
+    "mathIt"
 ], function(
     Backbone,
     _,
     $,
+    drop,
     expressionGenerator,
     rpnBuilder,
     rpn,
     mathIt,
-    Statistic,
-    PopupManager,
+    ko,
     MathTemplate
 ) {
     var popupContent = {
@@ -29,18 +27,20 @@ define([
         leaf: "Это операнд, выбери операцию"
     };
 
+    var DEFAULT_OPTIONS = {
+        position: "bottom center",
+        remove: true,
+        classes: "drop-theme-arrows"
+    };
+
     var operations = ["+", "-", "*", "/"];
 
-    var MainView = Backbone.View.extend({
+    var MainExpressionView = Backbone.View.extend({
         initialize: function() {
             this.subviews = [];
-
-            //this.user = { goodAnswer: 0, wrongAnswer: 0 , currentWrongAnswers: 0 };
-            this.statistic = new Statistic();
-            this.popupManager = new PopupManager();
-
+            this.user = { goodAnswer: 0, wrongAnswer: 0 , currentWrongAnswers: 0 };
+            this.questionNumber = 0;
         },
-        template: _.template(MathTemplate),
 
         render: function() {
             this.$el.html(this.template());
@@ -55,7 +55,8 @@ define([
 
         _newExpression: function() {
             var mathResultString = "";
-            this.statistic.newQuestion();
+            this.questionNumber++;
+            this.user.currentWrongAnswers = 0;
             this._updateDebagStatistic();
             this.expression = expressionGenerator.generate(4);
             $(".result-expression").empty();
@@ -97,34 +98,38 @@ define([
 
         // Добавить отдельную логику для генерации контента попапа в случае неправильной операции (нужно объяснять почему)
         _openPopup: function(event) {
+            if (this.activePopup) {
+                //$(".drop").remove();
+                this.activePopup.close();
+                this.activePopup.remove();
+                this.activePopup = null;
+                return;
+            }
+            // id - номер В обратной польской нотации
             var id = event.target.dataset.id;
-            var node = this.nodes.get(+id);
 
-            // POPUP content generation and change statistic!!
             var content;
+            var node = this.nodes.get(+id);
             if (!node) {
                 content = popupContent.wrongNode;
-                this.statistic.addWrongAnswer();
             } else if (this.isCalculatable(node)) {
                 //TODO: Можно добавить оброботчики правильно и не правильно ответа.
                 content = popupContent.insertValue;
             } else if (node.leaf) {
                 content = popupContent.leaf;
-                this.statistic.addWrongAnswer();
+                this.user.wrongAnswer++;
+                this.user.currentWrongAnswers++;
             } else {
                 content = popupContent.wrongNode;
-                this.statistic.addWrongAnswer();
+                this.user.wrongAnswer++;
+                this.user.currentWrongAnswers++;
             };
-
             this._updateDebagStatistic();
-
-            // Open popup!
-            this.popupManager.openPopup(event.target, content);
-
-            //TODO:Можно ещё упростить Check answer from popup
-            var input = this.popupManager.getElement().find("input");
-            // TODO: Расширить текс - (генерировать контент в отдельном модуле?)!!!
-            var attentionText = this.popupManager.getElement().find(".question-input_attention");
+            this.activePopup = this._createPopup(content, event.target);
+            this.activePopup.open();
+            var input = $(this.activePopup.drop).find("input");
+            // TODO: Расширить текс!!!
+            var attentionText = $(this.activePopup.drop).find(".question-input_attention");
             var self = this;
             input.on("change", e => {
                 var curValue = e.currentTarget.value;
@@ -132,10 +137,14 @@ define([
                 if (self._campare(curValue, self.calculateNode(node))) {
                     //TODO: ПРОВЕРИТЬ КАК РАБОТАЕТ ДЛЯ ПРИМЕРОВ
                     self.changeNode(node, curValue);
-                    self.popupManager.closePopup();
-                    self.statistic.addGoodAnswer();
+                    self.activePopup.close();
+                    self.activePopup.remove();
+                    self.activePopup = null;
+                    self.user.goodAnswer++;
+                    self.user.currentWrongAnswers = 0;
                 } else {
-                    self.statistic.addWrongAnswer();
+                    self.user.wrongAnswer++;
+                    self.user.currentWrongAnswers++;
                     attentionText.show();
                     input.val("");
                 }
@@ -144,10 +153,10 @@ define([
         },
 
         _updateDebagStatistic: function() {
-            this.$el.find("#goodAnswer").text(this.statistic.goodAnswer);
-            this.$el.find("#wrongAnswer").text(this.statistic.wrongAnswer);
-            this.$el.find("#currentWrongAnswers").text(this.statistic.currentWrongAnswers);
-            this.$el.find("#questionNumber").text(this.statistic.questionNumber);
+            this.$el.find("#goodAnswer").text(this.user.goodAnswer);
+            this.$el.find("#wrongAnswer").text(this.user.wrongAnswer);
+            this.$el.find("#currentWrongAnswers").text(this.user.currentWrongAnswers);
+            this.$el.find("#questionNumber").text(this.user.questionNumber);
         },
 
         //FOR INT and Float value
@@ -170,7 +179,6 @@ define([
 
         },
 
-        //TODO: Можно вынести nodes и их построение в отдельный модуль!
         createGraphFromRPN: function(rpnWithIds) {
             var self = this;
             // var rpn = [];
@@ -292,11 +300,24 @@ define([
 
         ////////////////////////////////////////  POPUP ------------ START ////////////////////////////////////////////////////
 
-        _
+        _createPopup: function(content, target, options) {
+            if (content && target) {
+                options = options || {};
+                options.content = content;
+                options.target = target;
+                options = _.extend(_.clone(DEFAULT_OPTIONS), options);
+
+                // Create Tether element
+                var popover = new drop(options);
+                return popover;
+            } else {
+                console.warn("Tried to open popover with insufficient parameters.");
+            }
+        }
 
       ///////////////////////////////////////  POPUP ------------ END ////////////////////////////////////////////////////
 
     });
 
-    return MainView;
+    return MainExpressionView;
 });
