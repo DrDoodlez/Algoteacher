@@ -55,7 +55,9 @@ define([
         }
 
         getElement() {
-            return $(this.activePopup.drop);
+            if (this.activePopup) {
+                return $(this.activePopup.drop);
+            }
         }
 
         // getPopupInput() {
