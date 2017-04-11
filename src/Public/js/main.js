@@ -92,6 +92,12 @@ require.config({
         "PopupManager": {
             exports: "PopupManager"
         },
+        "MathNodesHelper": {
+            exports: "MathNodesHelper"
+        },
+        "MathHelper": {
+            exports: "MathHelper"
+        },
         "mathjax": {
             exports: "MathJax",
             init: function() {
@@ -138,7 +144,9 @@ require.config({
         rpnBuilder: "./modules/rpnBuilder",
         rpn: "./modules/rpn",
         Statistic: "./modules/Statistic",
-        PopupManager: "./modules/PopupManager"
+        PopupManager: "./modules/PopupManager",
+        MathNodesHelper: "./modules/MathNodesHelper",
+        MathHelper: "./modules/MathHelper"
     }
 });
 
