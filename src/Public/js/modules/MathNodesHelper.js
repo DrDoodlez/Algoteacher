@@ -23,6 +23,7 @@ define([
             // _.each(rpnWithIds, e => {
             //     rpn.push(e.token);
             // })
+            this.nodes.clear();
             var tokensAndId = _.reverse(rpnWithIds);
             var lastId = 0;
             _.each(tokensAndId, t => {

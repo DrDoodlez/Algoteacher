@@ -118,27 +118,29 @@ define([
             //TODO:Можно ещё упростить Check answer from popup
             var input = this.popupManager.getElement().find("input");
             // TODO: Расширить текс - (генерировать контент в отдельном модуле?)!!!
-            var self = this;
-            input.on("change", e => {
-                var curValue = e.currentTarget.value;
-                //TODO: Можно использовать метод из rpn Calculate
-                self.mathNodesHalper.checkNodeValue(node, curValue) ?
-                    self._goodAnswer(node, curValue) : self._wrongAnswer();
-                self._updateDebagStatistic();
-            });
+            input.on("change", this._onSetAnswer.bind(this, node));
         },
 
-        _goodAnswer(node, curValue) {
+        _onSetAnswer: function(node, event) {
+            var curValue = event.currentTarget.value;
+            //TODO: Можно использовать метод из rpn Calculate
+            this.mathNodesHalper.checkNodeValue(node, curValue) ?
+                this._goodAnswer(node, curValue) : this._wrongAnswer();
+            this._updateDebagStatistic();
+        },
+
+        _goodAnswer: function(node, curValue) {
             this._update(node, curValue);
             this.popupManager.closePopup();
             this.statistic.addGoodAnswer();
         },
 
-        _wrongAnswer() {
+        _wrongAnswer: function() {
             var attentionText = this.popupManager.getElement().find(".question-input_attention");
+            var input = this.popupManager.getElement().find("input");
             this.statistic.addWrongAnswer();
             attentionText.show();
-            this.val("");
+            input.val("");
         },
 
         _updateDebagStatistic: function() {
