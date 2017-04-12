@@ -75,10 +75,18 @@ define([
         }
 
         toLeaf(node) {
+            let child1 = node.childs[0].origId;
+            let child2 = node.childs[1].origId;
+            this.nodes.delete(child1);
+            this.nodes.delete(child2);
             delete node.childs[0];
             delete node.childs[1];
             node.childs = [];
             node.leaf = true;
+        }
+
+        getNodesNumber() {
+            return this.nodes.size;
         }
 
         changeLabel(node, label) {

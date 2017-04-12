@@ -154,6 +154,39 @@ define([
             $expression.lettering("words");
         },
 
+        _update: function(node, label) {
+            var oldExpression = this.expression.slice();
+            // Получение элеентов для удаления
+            var child1ID = node.childs[0].origId;
+            var child2ID = node.childs[1].origId;
+            var left;
+            var right;
+            for (var i = child1ID - 1; i >= 0; i--) {
+                if (this.expression[i] != "") {
+                    left = i;
+                    break;
+                }
+            }
+            for (var i = child2ID + 1; i <= this.expression.length; i++) {
+                if (this.expression[i] != "") {
+                    right = i;
+                    break;
+                }
+            }
+
+            // expression
+            this._updateExpression(node.origId, child1ID, child2ID, left, right, label);
+            // nodes
+            this._updateNodes(node, label);
+            // dom
+            this._updateNodesInDOM(node.origId, child1ID, child2ID, label);
+            // expression result
+            this._updateExpressionResult(oldExpression);
+            if (this.mathNodesHalper.getNodesNumber() == 1) {
+                this._showExpressionAnswer();
+            }
+        },
+
         _updateNodesInDOM: function(nodeId, firstChildId, secondChildId, label) {
             // node.origId
             let nodeRoot = $("#word" + nodeId);
@@ -188,34 +221,13 @@ define([
             $math.text(newText);
         },
 
-        _update: function(node, label) {
-            var oldExpression = this.expression.slice();
-            // Получение элеентов для удаления
-            var child1ID = node.childs[0].origId;
-            var child2ID = node.childs[1].origId;
-            var left;
-            var right;
-            for (var i = child1ID - 1; i >= 0; i--) {
-                if (this.expression[i] != "") {
-                    left = i;
-                    break;
-                }
-            }
-            for (var i = child2ID + 1; i <= this.expression.length; i++) {
-                if (this.expression[i] != "") {
-                    right = i;
-                    break;
-                }
-            }
-
-            // expression
-            this._updateExpression(node.origId, child1ID, child2ID, left, right, label);
-            // nodes
-            this._updateNodes(node, label);
-            // dom
-            this._updateNodesInDOM(node.origId, child1ID, child2ID, label);
-            // expression result
-            this._updateExpressionResult(oldExpression);
+        _showExpressionAnswer: function() {
+            let resultExpression = $(".result-expression")[0];
+            resultExpression.lastChild.innerText += " " + _.join(this.expression, "");
+            var $expression = this.$el.find("#expression");
+            $expression.hide();
+            // TODO: ЛИбо генерировать новый пример, либо показывать ообщение и ждать нажатия на кнопку.
+            // Либо ввода примера
         },
 
         _removeWordById: function(id) {
