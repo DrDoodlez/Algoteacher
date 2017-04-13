@@ -12,6 +12,7 @@ define([
     var DEFAULT_OPTIONS = {
         position: "bottom center",
         remove: true,
+        openOn: undefined,
         classes: "drop-theme-arrows"
     };
 
@@ -47,8 +48,8 @@ define([
             }
         }
 
-        closePopup() {
-            this.activePopup.close();
+        closePopup(event) {
+            this.activePopup.close(event);
             this.activePopup.remove();
             this.activePopup = null;
             $(document).find(".drop").remove();
