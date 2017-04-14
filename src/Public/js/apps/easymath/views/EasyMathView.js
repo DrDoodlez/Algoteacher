@@ -81,6 +81,7 @@ define([
             resDiv.text(rpnString);
             console.log(rpnString);
             this.$el.find("#math").text(mathResultString);
+            this._highlightNextOperation();
             //initGraph();
         },
 
@@ -103,6 +104,7 @@ define([
                 this.statistic.addWrongAnswer();
             } else if (this.mathNodesHalper.isCalculatable(node)) {
                 //TODO: Можно добавить оброботчики правильно и не правильно ответа.
+                this._removeHighlight();
                 content = popupContent.insertValue;
             } else if (node.leaf) {
                 content = popupContent.leaf;
@@ -120,6 +122,8 @@ define([
             var input = this.popupManager.getElement().find("input");
             // TODO: Расширить текс - (генерировать контент в отдельном модуле?)!!!
             input.on("change", this._onSetAnswer.bind(this, node));
+            // TODO может не тут нужно добавлять действие
+            this._checkUserStat();
         },
 
         _onSetAnswer: function(node, event) {
@@ -153,6 +157,36 @@ define([
 
         createExpressionInDOM: function($expression) {
             $expression.lettering("words");
+        },
+
+        _autoCalc: function() {
+            var node = this.mathNodesHalper.getNextOperation();
+            if (node) {
+                var label = this.mathNodesHalper.calculateNode(node);
+                this._update(node, label);
+            }
+        },
+
+        //TODO: нужна логика для действий системы на пользовательскую статистику
+        _checkUserStat: function() {
+            const wrong = this.statistic.wrongAnswers();
+            if (wrong > 3) {
+                this._autoCalc();
+            } else if (wrong = 2) {
+                this._highlightNextOperation();
+            }
+        },
+
+        _highlightNextOperation: function() {
+            var node = this.mathNodesHalper.getNextOperation();
+            if (node) {
+                const id = node.origId;
+                $(this.$el.find(".lettering-item")[id]).addClass("highlight-item");
+            }
+        },
+
+        _removeHighlight: function() {
+            $(".highlight-item").removeClass("highlight-item");
         },
 
         _update: function(node, label) {

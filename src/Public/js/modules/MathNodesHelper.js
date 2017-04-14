@@ -92,6 +92,23 @@ define([
         changeLabel(node, label) {
             node.label = label;
         }
+
+        getNextOperation() {
+            // if (this.nodes.size == 1) {
+            //     let node = this.nodes.values.next().value;
+            // }
+            let node;
+            this.nodes.forEach((value, key) => {
+                if (this.isCalculatable(value)) {
+                    node = value;
+                }
+            });
+            return node;
+        }
+
+        getNextOperationId() {
+            return this.getNextOperation().origId;
+        }
     }
 
     return MathNodesHelper;

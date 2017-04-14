@@ -33,6 +33,11 @@ define([
             this.currentWrongAnswers++;
         }
 
+        // FOR TEST Need more cool logic
+        wrongAnswers() {
+            return this.currentWrongAnswers;
+        }
+
         logStatistics() {
             console.log("goodAnswer: " + this.goodAnswer);
             console.log("wrongAnswer: " + this.wrongAnswer)

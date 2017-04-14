@@ -26,6 +26,10 @@ text {
     cursor: pointer;
 }
 
+.highlight-item {
+    border-bottom: dotted 1px black;
+}
+
 #user-name-label {
     cursor: pointer;
 }
