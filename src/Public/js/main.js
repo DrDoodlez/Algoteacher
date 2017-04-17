@@ -98,6 +98,9 @@ require.config({
         "MathHelper": {
             exports: "MathHelper"
         },
+        "HelpGenerator": {
+            exports: "HelpGenerator"
+        },
         "mathjax": {
             exports: "MathJax",
             init: function() {
@@ -146,7 +149,8 @@ require.config({
         Statistic: "./modules/Statistic",
         PopupManager: "./modules/PopupManager",
         MathNodesHelper: "./modules/MathNodesHelper",
-        MathHelper: "./modules/MathHelper"
+        MathHelper: "./modules/MathHelper",
+        HelpGenerator: "./modules/HelpGenerator"
     }
 });
 
