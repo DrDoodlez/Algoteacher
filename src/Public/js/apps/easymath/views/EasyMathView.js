@@ -81,7 +81,7 @@ define([
             resDiv.text(rpnString);
             console.log(rpnString);
             this.$el.find("#math").text(mathResultString);
-            this._highlightNextOperation();
+            //this._highlightNextOperation();
             //initGraph();
         },
 
@@ -170,10 +170,12 @@ define([
         //TODO: нужна логика для действий системы на пользовательскую статистику
         _checkUserStat: function() {
             const wrong = this.statistic.wrongAnswers();
-            if (wrong > 3) {
-                this._autoCalc();
-            } else if (wrong = 2) {
+            const good = this.statistic.wrongAnswers();
+            if (wrong > 2) {
                 this._highlightNextOperation();
+            } else if (good > 4) {
+                this._autoCalc();
+                this.statistic.refreshGoodAnswerSerias();
             }
         },
 
