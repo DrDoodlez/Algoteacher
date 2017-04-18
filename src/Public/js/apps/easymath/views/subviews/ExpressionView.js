@@ -30,16 +30,15 @@ define([
     };
 
     var MainView = Backbone.View.extend({
-        initialize: function(operations) {
+        // inputMode = random / manual
+        initialize: function(options) {
             this.subviews = [];
-            const options = {
-                operations: operations
-            };
+            this._options = options;
             //this.user = { goodAnswer: 0, wrongAnswer: 0 , currentWrongAnswers: 0 };
             this.statistic = new Statistic();
             this.popupManager = new PopupManager();
-            this.mathNodesHalper = new MathNodesHelper(options);
-            this.helpGenerator = new HelpGenerator(options.operations);
+            this.mathNodesHalper = new MathNodesHelper(this._options);
+            this.helpGenerator = new HelpGenerator(this._options.operations);
 
         },
         template: _.template(MathTemplate),
@@ -56,10 +55,15 @@ define([
         },
 
         _newExpression: function() {
+            const opNumber = this._options.numberOfOperations;
+            const operations = this._options.operations;
+            const type = this._options.type;
+            const min = this._options.min;
+            const max = this._options.max;
             var mathResultString = "";
             this.statistic.newQuestion();
             this._updateDebagStatistic();
-            this.expression = expressionGenerator.generate(4);
+            this.expression = expressionGenerator.generate(opNumber, type, min, max, operations);
             $(".result-expression").empty();
             var $expression = this.$el.find("#expression");
             $expression.show();

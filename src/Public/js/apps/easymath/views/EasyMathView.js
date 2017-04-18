@@ -13,14 +13,35 @@ define([
     NotationsView,
     ConfTemplate
 ) {
+    const defaultConfig = {
+        operations: ["+", "-", "*", "/"],
+        inputMode: "Random", // Random, Manual
+        type: "int", // int, double, x8, x2,
+        numberOfOperations: 4,
+        max: 9,
+        min: 1
+    };
+
+    // const manualConfig = {
+    //     inputMode: "Manual"
+    // };
+    //
+    // const x2Config = {
+    //     operations: ["+", "-", "*"],
+    //     inputMode: "Random",
+    //     numberOfOperations: 2,
+    //     type: "x2", // int, double, x8, x2,
+    //     max: 10,
+    //     min: 0
+    // };
 
     var MainView = Backbone.View.extend({
         initialize: function() {
             this.subviews = [];
             this.options = {
-                operations: ["+", "-", "*", "/"],
-                mode: "expression"
+                mode: "expression",
             };
+            this.config = defaultConfig;
             //this.user = { goodAnswer: 0, wrongAnswer: 0 , currentWrongAnswers: 0 };
         },
         template: _.template(ConfTemplate),
@@ -35,7 +56,7 @@ define([
         openView: function() {
             let view;
             if (this.options.mode == "expression") {
-                view = new ExpressionView(this.options.operations);
+                view = new ExpressionView(this.config);
             } else if (this.options.mode == "notation") {
 
             }

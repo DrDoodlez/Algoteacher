@@ -8,32 +8,89 @@ define(
         _,
         $
     ) {
-        // отладить работу с ^ и 0
-        var defaultOperations = ["+", "-", "*", "/"];
-        var defaultMaxNumber = 9;
-        var defaultMinNumber = 1;
-        var openBrakets = 0;
-        // Можно задать частоту
-        var brakets = [0, 0, 1];
+        class Number {
+            constructor(minNumber, maxNumber) {
+                this.min = minNumber;
+                this.max = maxNumber;
+            }
 
-        function generateExpression(numberOfOperations, max, min, operations) {
-            var expression = [];
-            var operations = operations || defaultOperations;
-            var minNumber = min || defaultMinNumber;
-            var maxNumber = max || defaultMaxNumber;
+            getRandom() {}
+        }
+        class intNumber extends Number {
+            getRandom() {
+                return this.min + Math.floor(Math.random() * (this.max + 1 - this.min));
+            }
+        }
+        class floatNumber extends Number {
+            getRandom() {
+                return Math.random() * (this.max - this.min) + this.min;
+            }
+        }
+        class x2Number extends intNumber {
+            getRandom() {
+                return super.getRandom().toString(2);
+            }
+        }
+        class x8Number extends intNumber {
+            getRandom() {
+                return super.getRandom().toString(8);
+            }
+        }
+        class x16Number extends intNumber {
+            getRandom() {
+                return super.getRandom().toString(16);
+            }
+        }
+        class divadedNumber extends intNumber {
+            getRandom() {
+                const a  = super.getRandom();
+                let b = 0;
+                while (b = 0) {
+                    b  = super.getRandom();
+                }
+                const tex = "\frac{" + a + "}{" + b + "}";
+                return { a: a, b: b, string: a + "/" + b , tex: tex };
+            }
+        }
+
+        const types = {
+            "int" : intNumber,
+            "float" : floatNumber,
+            "x2" : x2Number,
+            "x8" : x8Number,
+            "x16" : x16Number,
+            "div" : divadedNumber
+        };
+        // отладить работу с ^ и 0
+        const defaultOperations = ["+", "-", "*", "/"];
+        const defaultMaxNumber = 9;
+        const defaultMinNumber = 1;
+        const openBrakets = 0;
+        const defaultType = "int";
+        // Можно задать частоту
+        const brakets = [0, 0, 1];
+
+        function generateExpression(numberOfOperations, type, max, min, operations) {
+            let expression = [];
+            const operations = operations || defaultOperations;
+            const minNumber = min || defaultMinNumber;
+            const maxNumber = max || defaultMaxNumber;
+            const type = type || defaultType;
             openBrakets = 0;
-            var number = getRandomNumber(minNumber, maxNumber);
-            var braket = getOpenBraket();
+            const currentType = types[type] || intNumber;
+            const currentNumberType = new currentType(minNumber, maxNumber);
+            let number = currentNumberType.getRandom();
+            let braket = getOpenBraket();
             expression.push(braket);
             expression.push(number);
 
             for (var i = 1; i <= numberOfOperations; i++) {
                 braket = "";
                 // Выбор операции из массива
-                var operation = getRandomFromArray(operations);
+                let operation = getRandomFromArray(operations);
                 expression.push(operation);
                 // Выбор операнда
-                number = getRandomNumber(minNumber, maxNumber);
+                number = currentNumberType.getRandom();
                 // Расставить скобку
                 if (openBrakets && numberOfOperations - i <= openBrakets) {
                     braket = ")";
@@ -60,46 +117,12 @@ define(
         }
 
         function getRandomFromArray(arr) {
-            var rand = Math.floor(Math.random() * arr.length);
+            const rand = Math.floor(Math.random() * arr.length);
             return arr[rand];
         }
 
-        function getRandomNumber(min, max) {
-            return min + Math.floor(Math.random() * (max + 1 - min));
-        }
-
-        function getRandomFloatNumber(min, max) {
-            return Math.random() * (max - min) + min;
-        }
-
-        // TODO: проверить как будет работать
-        function getRandom2Number(min, max) {
-            return getRandomNumber(min, max).toString(2);
-        }
-
-        // TODO: проверить как будет работать
-        function getRandom8Number(min, max) {
-            return getRandomNumber(min, max).toString(8);
-        }
-
-        // TODO: проверить как будет работать
-        function getRandom16Number(min, max) {
-            return getRandomNumber(min, max).toString(16);
-        }
-
-        function getRandomDividedNumber(min, max){
-            var a  = getRandomNumber(min, max);
-            var b = 0;
-            while (b = 0) {
-                b  = getRandomNumber(min, max);
-            }
-            let tex = "\frac{" + a + "}{" + b + "}";
-            return { a: a, b: b, string: a + "/" + b , tex: tex };
-        }
-
-
         function getOpenBraket() {
-            var res = getBraket("(");
+            const res = getBraket("(");
             if (!!res) {
                 openBrakets++;
             }
@@ -107,7 +130,7 @@ define(
         }
 
         function getCloseBraket() {
-            var res = getBraket(")");
+            const res = getBraket(")");
             if (!!res) {
                 openBrakets--;
             }
