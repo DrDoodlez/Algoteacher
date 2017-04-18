@@ -8,6 +8,7 @@ define([
     "Statistic",
     "PopupManager",
     "MathNodesHelper",
+    "HelpGenerator",
     "text!./../../templates/mathTemplate.html"
 ], function(
     Backbone,
@@ -19,14 +20,13 @@ define([
     Statistic,
     PopupManager,
     MathNodesHelper,
+    HelpGenerator,
     MathTemplate
 ) {
     var popupContent = {
         insertValue: "<div><div class='question-input_attention' hidden = true> Неправильно! </div>" +
                         "<div class='question-input_text'> Введи результат операции </div>" +
                         "<input type = 'text' class = 'question-input' id = 'question-input_input' /></div>",
-        wrongNode: "Данную операцию нельзя выполнить в данный момент, выбери другую!",
-        leaf: "Это операнд, выбери операцию"
     };
 
     var MainView = Backbone.View.extend({
@@ -39,6 +39,7 @@ define([
             this.statistic = new Statistic();
             this.popupManager = new PopupManager();
             this.mathNodesHalper = new MathNodesHelper(options);
+            this.helpGenerator = new HelpGenerator(options.operations);
 
         },
         template: _.template(MathTemplate),
@@ -100,17 +101,17 @@ define([
             // POPUP content generation and change statistic!!
             var content;
             if (!node) {
-                content = popupContent.wrongNode;
+                content = this.helpGenerator.brackets();
                 this.statistic.addWrongAnswer();
             } else if (this.mathNodesHalper.isCalculatable(node)) {
                 //TODO: Можно добавить оброботчики правильно и не правильно ответа.
                 this._removeHighlight();
                 content = popupContent.insertValue;
             } else if (node.leaf) {
-                content = popupContent.leaf;
+                content = this.helpGenerator.leaf();
                 this.statistic.addWrongAnswer();
             } else {
-                content = popupContent.wrongNode;
+                content = this.helpGenerator.lowPriority();
                 this.statistic.addWrongAnswer();
             };
 
