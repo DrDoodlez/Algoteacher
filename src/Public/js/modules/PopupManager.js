@@ -30,6 +30,8 @@ define([
             }
             this.activePopup = this._createPopup(content, target);
             this.activePopup.open();
+            $(document).on("click", this.closePopup.bind(this));
+            event.stopPropagation();
             return;
         }
 
@@ -49,10 +51,12 @@ define([
         }
 
         closePopup(event) {
-            this.activePopup.close(event);
-            this.activePopup.remove();
-            this.activePopup = null;
-            $(document).find(".drop").remove();
+            if (this.activePopup) {
+                this.activePopup.close(event);
+                this.activePopup.remove();
+                this.activePopup = null;
+                $(document).find(".drop").remove();
+            }
         }
 
         getElement() {
